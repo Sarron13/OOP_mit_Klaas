@@ -7,3 +7,7 @@ Wie Objekte aus Datei serialisieren?
     -> "<Attributname>"
     -> -<Wert>-
 - Serializer soll Fehler ignorieren ODER einlesen abbrechen
+
+- Vielleicht gibt es auch schon fertige Serializer
+- JSON ?
+
