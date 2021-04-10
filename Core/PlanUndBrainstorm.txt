@@ -1,0 +1,9 @@
+Hier werden Pläne und Brainstormings festgehalten:
+
+Wie Objekte aus Datei serialisieren?
+- eigenes Erkennungsformat entwickeln
+    Beispielhafte bezeichnung ("\" könnte dann allgemeines Zeichen sein um das folgende Zeichen Zu initialisieren)
+    -> *<Datentyp>*
+    -> "<Attributname>"
+    -> -<Wert>-
+- Serializer soll Fehler ignorieren ODER einlesen abbrechen
