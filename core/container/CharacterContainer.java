@@ -1,4 +1,6 @@
-package core;
+package core.container;
+
+import core.model.Character;
 
 import java.util.ArrayList;
 
