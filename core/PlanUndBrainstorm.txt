@@ -11,3 +11,7 @@ Wie Objekte aus Datei serialisieren?
 - Vielleicht gibt es auch schon fertige Serializer
 - JSON ?
 
+Serializer soll nach festem Muster Daten einlesen und dann schon wissen welches Attribut dazu gehört.
+Instanz Daten (Attributwerte) müssen immer vollständig abgespeichert werden.
+Bei Änderung der Hauptklasse muss der Serializer wissen, welche Werte er nicht, aus dem vorhandenen Datensatz erstellen kann.
+Diese Daten müssen dann mit "null" initialisiert werden.
