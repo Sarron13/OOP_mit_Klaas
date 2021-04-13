@@ -5,7 +5,6 @@ import core.serialize.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.UUID;
 
 public class CharacterContainer {
@@ -13,6 +12,7 @@ public class CharacterContainer {
     private static CharacterContainer instance = null;
     private final ArrayList<Character> container;
     private Serializer serializer;
+
 
     private CharacterContainer() {
         this.container = new ArrayList<Character>();
@@ -27,11 +27,6 @@ public class CharacterContainer {
 
     public ArrayList<Character> getAllCharacters() {
         return container;
-    }
-
-
-    public void setSerializer(Serializer serializer) {
-        this.serializer = serializer;
     }
 
     public final CharacterContainer addCharacter(Character character) {
@@ -69,6 +64,10 @@ public class CharacterContainer {
                 return character;
         }
         return null;
+    }
+
+    public void setSerializer(Serializer serializer) {
+        this.serializer = serializer;
     }
 
     @Override
