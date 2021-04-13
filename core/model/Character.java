@@ -1,5 +1,6 @@
 package core.model;
 
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -8,10 +9,28 @@ public class Character {
     private String firstname;
     private String lastname;
     private int age;
-    public Character(final String fistname, final String lastname, final int age) {
-        this.id = UUID.randomUUID();
-        this.setFirstname(fistname).setLastname(lastname).setAge(age);
 
+    public Character(final String firstname, final String lastname, final int age) {
+        this.id = UUID.randomUUID();
+        this.setFirstname(firstname).setLastname(lastname).setAge(age);
+
+    }
+
+    public final Character update(Character c) {
+        this.setFirstname(c.getFirstname()).setLastname(c.getLastname()).setAge(c.getAge());
+        return this;
+    }
+
+    public boolean matches(String searchString) {
+        return this.matchesFirstname(searchString) || this.matchesLastname(searchString);
+    }
+
+    public boolean matchesFirstname(String searchString) {
+        return this.getFirstname().toLowerCase(Locale.ROOT).contains(searchString.toLowerCase(Locale.ROOT));
+    }
+
+    public boolean matchesLastname(String searchString) {
+        return this.getLastname().toLowerCase(Locale.ROOT).contains(searchString.toLowerCase(Locale.ROOT));
     }
 
     public UUID getId() {

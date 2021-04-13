@@ -4,6 +4,8 @@ import core.model.Character;
 import core.serialize.Serializer;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class CharacterContainer {
@@ -23,13 +25,10 @@ public class CharacterContainer {
         return instance;
     }
 
-    public ArrayList<Character> getContainer() {
+    public ArrayList<Character> getAllCharacters() {
         return container;
     }
 
-    public Serializer getSerializer() {
-        return serializer;
-    }
 
     public void setSerializer(Serializer serializer) {
         this.serializer = serializer;
@@ -40,19 +39,31 @@ public class CharacterContainer {
         return this;
     }
 
-    public final CharacterContainer updateCharacter(Character character) {
+    public List<Character> search(String searchString) {
+        List<Character> matchedCharacters = new ArrayList<Character>();
+        for (Character c : this.getAllCharacters()) {
+            if (c.matches(searchString))
+                matchedCharacters.add(c);
+        }
+        return matchedCharacters;
+    }
+
+    public final CharacterContainer updateCharacter(Character c) {
+        if (this.findById(c.getId()) != null) {
+            this.findById(c.getId()).update(c);
+        }
         return this;
     }
 
-    public final CharacterContainer deleteCharacter(Character deleteChar) {
+    public final CharacterContainer deleteByCharacter(Character c) {
         for (int i = 0; i < container.size(); i++) {
-            if (container.get(i).getId().equals(deleteChar.getId()))
+            if (container.get(i).equals(c))
                 container.remove(i);
         }
         return this;
     }
 
-    public final Character findById(UUID id) {
+    public Character findById(UUID id) {
         for (Character character : container) {
             if (character.getId().equals(id))
                 return character;
@@ -63,7 +74,7 @@ public class CharacterContainer {
     @Override
     public String toString() {
         String output = "";
-        for(Character c: this.getContainer()){
+        for (Character c : this.getAllCharacters()) {
             output += c + "\n";
         }
         return output;
