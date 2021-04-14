@@ -16,24 +16,24 @@ import java.util.UUID;
 public interface CharacterController {
 
     @POST
-    public Response create(@Context UriInfo uriInfo, Character character);
+    public void create(@Context UriInfo uriInfo, Character character);
 
     @GET
     @Path("/{charid}")
-    public String read(@PathParam("charid") UUID id);
+    public Character read(@PathParam("charid") UUID id);
 
     @GET
-    public String getAll(@QueryParam("maxnumber") @DefaultValue("50") int maxNumber);
+    public Collection<Character> getAll();
 
     @PUT
     @Path("/{charid}")
-    public void update(@PathParam("charid") UUID id, java.lang.Character c);
+    public void update(Character c);
 
     @DELETE
     @Path("/{charid}")
     public void delete(@PathParam("charid") UUID id);
 
-    @DELETE
+    @GET
     @Path("/search")
     public Collection<Character> search(@QueryParam("query") String query);
 }

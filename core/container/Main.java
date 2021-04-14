@@ -32,7 +32,7 @@ public class Main {
         System.out.println(container.search("Z"));
 
         //DELETE
-        container.deleteByCharacter(grogu);
+        container.deleteByID(grogu.getId());
         System.out.println(container);
     }
 }

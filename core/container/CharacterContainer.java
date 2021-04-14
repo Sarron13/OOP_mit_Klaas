@@ -43,16 +43,16 @@ public class CharacterContainer {
         return matchedCharacters;
     }
 
-    public final CharacterContainer updateCharacter(Character c) {
-        if (this.findById(c.getId()) != null) {
-            this.findById(c.getId()).update(c);
-        }
-        return this;
+    public Character updateCharacter(Character c) {
+        if (this.findById(c.getId()) != null)
+            return this.findById(c.getId()).update(c);
+        else
+            return null;
     }
 
-    public final CharacterContainer deleteByCharacter(Character c) {
+    public final CharacterContainer deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
-            if (container.get(i).equals(c))
+            if (container.get(i).getId().equals(id))
                 container.remove(i);
         }
         return this;
