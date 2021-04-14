@@ -39,7 +39,8 @@ public class CharacterControllerImpl implements CharacterController {
 
     @Override
     public void delete(UUID id) {
-
+        if(!container.deleteByID(id))
+            throw new NotFoundException();
     }
 
     @Override

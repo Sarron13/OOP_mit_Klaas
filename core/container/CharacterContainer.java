@@ -50,12 +50,13 @@ public class CharacterContainer {
             return null;
     }
 
-    public final CharacterContainer deleteByID(UUID id) {
+    public boolean deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
             if (container.get(i).getId().equals(id))
                 container.remove(i);
+            return true;
         }
-        return this;
+        return false;
     }
 
     public Character findById(UUID id) {
