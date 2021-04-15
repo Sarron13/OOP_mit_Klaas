@@ -1,5 +1,12 @@
 package core.serialize;
 
-public class FileCreater {
+public class FileCreator {
 
+    private FileCreator() {
+
+    }
+
+    public synchronized FileCreator getInstance() {
+        return null;
+    }
 }
