@@ -1,6 +1,9 @@
 package com.fhkiel.oopproject.model;
 
-public class TestData {
+public class TestData implements Serializable {
+
+    // The serialVersionUID is important for version control
+    private static final long serialVersionUID = 1L;
 
     private String bezeichner;
     private int nummer;
@@ -19,8 +22,8 @@ public class TestData {
     }
 
     public TestData(TestData cloneData) {
-        this.setBezeichner(cloneData.getBezeichner() +  "(Clone)");
-        this.setNummer(cloneData.getNummer()*(-1));
+        this.setBezeichner(cloneData.getBezeichner() + "(Clone)");
+        this.setNummer(cloneData.getNummer() * (-1));
         this.setValue(cloneData.getValue());
     }
 

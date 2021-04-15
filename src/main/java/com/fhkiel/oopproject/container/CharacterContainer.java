@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CharacterContainer {
+public class CharacterContainer implements Serializable {
+
+    // The serialVersionUID is important for version control
+    private static final long serialVersionUID = 1L;
 
     private static CharacterContainer instance = null;
     private final ArrayList<Character> container;
     private Serializer serializer;
-
 
     private CharacterContainer() {
         this.container = new ArrayList<Character>();
