@@ -1,8 +1,12 @@
 package com.fhkiel.oopproject.model;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 public class TestData implements Serializable {
 
     // The serialVersionUID is important for version control
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String bezeichner;

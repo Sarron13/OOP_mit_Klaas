@@ -19,8 +19,10 @@ public class Main {
         container.addCharacter(boba);
         container.addCharacter(mando);
         System.out.println(container);
-
+        System.out.println("Save Container");
         Serializer.writeData(container);
+        System.out.println("Read Container");
+        System.out.println(Serializer.readData());
 
         /*
          * //UPDATE grogu.setLastname("Yoda"); container.updateCharacter(grogu);

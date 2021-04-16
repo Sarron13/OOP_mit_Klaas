@@ -3,6 +3,8 @@ package com.fhkiel.oopproject.container;
 import com.fhkiel.oopproject.model.Character;
 import com.fhkiel.oopproject.serialize.Serializer;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +12,7 @@ import java.util.UUID;
 public class CharacterContainer implements Serializable {
 
     // The serialVersionUID is important for version control
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private static CharacterContainer instance = null;
@@ -17,7 +20,7 @@ public class CharacterContainer implements Serializable {
     private Serializer serializer;
 
     private CharacterContainer() {
-        this.container = new ArrayList<Character>();
+        this.container = new ArrayList<>();
     }
 
     public static CharacterContainer getInstance() {
@@ -37,7 +40,7 @@ public class CharacterContainer implements Serializable {
     }
 
     public List<Character> search(String searchString) {
-        List<Character> matchedCharacters = new ArrayList<Character>();
+        List<Character> matchedCharacters = new ArrayList<>();
         for (Character c : this.getAllCharacters()) {
             if (c.matches(searchString))
                 matchedCharacters.add(c);
@@ -54,9 +57,10 @@ public class CharacterContainer implements Serializable {
 
     public boolean deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
-            if (container.get(i).getId().equals(id))
+            if (container.get(i).getId().equals(id)) {
                 container.remove(i);
-            return true;
+                return true;
+            }
         }
         return false;
     }
@@ -75,10 +79,11 @@ public class CharacterContainer implements Serializable {
 
     @Override
     public String toString() {
-        String output = "";
+        StringBuilder sb = new StringBuilder();
         for (Character c : this.getAllCharacters()) {
-            output += c + "\n";
+            sb.append(c);
+            sb.append("\n");
         }
-        return output;
+        return sb.toString();
     }
 }

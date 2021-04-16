@@ -1,11 +1,6 @@
 package com.fhkiel.oopproject.serialize;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 import com.fhkiel.oopproject.container.CharacterContainer;
 
@@ -15,15 +10,17 @@ import com.fhkiel.oopproject.container.CharacterContainer;
 public class Serializer implements Serializable {
 
     // The serialVersionUID is important for version control
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private static final String filename = "CharacterData.bode";
 
-    public static CharacterContainer readData(CharacterContainer characterData) {
+    public static CharacterContainer readData() {
+        CharacterContainer characterData = null;
         try {
             FileInputStream fileInput = new FileInputStream(filename);
             ObjectInputStream dataInput = new ObjectInputStream(fileInput);
-            characterData = (Character) dataInput.readObject();
+            characterData = (CharacterContainer) dataInput.readObject();
             dataInput.close();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -33,7 +30,7 @@ public class Serializer implements Serializable {
 
     public static void writeData(CharacterContainer dataToWrite) {
         try {
-            FileOutput fileOutput = new FileOutputStream(filename);
+            FileOutputStream fileOutput = new FileOutputStream(filename);
             ObjectOutputStream dataOutput = new ObjectOutputStream(fileOutput);
             dataOutput.writeObject(dataToWrite);
             dataOutput.close();
@@ -43,7 +40,7 @@ public class Serializer implements Serializable {
     }
 
     // MAIN-TEST
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         CharacterContainer container = CharacterContainer.getInstance();
 
         // CREATE
@@ -56,5 +53,5 @@ public class Serializer implements Serializable {
         System.out.println(container);
 
         Serializer.writeData(container);
-    }
+    }*/
 }
