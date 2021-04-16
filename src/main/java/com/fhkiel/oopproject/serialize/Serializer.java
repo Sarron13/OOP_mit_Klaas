@@ -17,40 +17,44 @@ public class Serializer implements Serializable {
     // The serialVersionUID is important for version control
     private static final long serialVersionUID = 1L;
 
-    private FileOutputStream fileOutput = null;
-    private FileInputStream fileInput = null;
-    private ObjectOutputStream dataOutput = null;
-    private ObjectInputStream dataInput = null;
+    private static final String filename = "CharacterData.bode";
 
-    public Serializer(String filename) {
-        fileOutput = new FileOutputStream(filename);
-        dataOutput = new ObjectOutputStream(fileOutput);
-
-        fileInput = new FileInputStream(filename);
-        dataInput = new ObjectInputStream(fileInput);
-    }
-
-    // Is not tested
-    public CharacterContainer readData(CharacterContainer characterData) {
+    public static CharacterContainer readData(CharacterContainer characterData) {
         try {
+            FileInputStream fileInput = new FileInputStream(filename);
+            ObjectInputStream dataInput = new ObjectInputStream(fileInput);
             characterData = (Character) dataInput.readObject();
+            dataInput.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
         return characterData;
     }
 
-    // Is not tested
-    public void writeData(CharacterContainer dataToWrite) {
+    public static void writeData(CharacterContainer dataToWrite) {
         try {
+            FileOutput fileOutput = new FileOutputStream(filename);
+            ObjectOutputStream dataOutput = new ObjectOutputStream(fileOutput);
             dataOutput.writeObject(dataToWrite);
+            dataOutput.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
-    public static int serializeData() {
-        return 0;
-    }
+    // MAIN-TEST
+    public static void main(String[] args) {
+        CharacterContainer container = CharacterContainer.getInstance();
 
+        // CREATE
+        Character grogu = new Character("Grogu", "Grogu", 50);
+        Character mando = new Character("Mando", "Grogu", 50);
+        Character boba = new Character("Boba", "Fett", 50);
+        container.addCharacter(grogu);
+        container.addCharacter(boba);
+        container.addCharacter(mando);
+        System.out.println(container);
+
+        Serializer.writeData(container);
+    }
 }
