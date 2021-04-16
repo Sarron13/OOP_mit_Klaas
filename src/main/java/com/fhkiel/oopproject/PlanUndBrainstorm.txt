@@ -1,0 +1,17 @@
+Hier werden Pläne und Brainstormings festgehalten:
+
+Wie Objekte aus Datei serialisieren?
+- eigenes Erkennungsformat entwickeln
+    Beispielhafte bezeichnung ("\" könnte dann allgemeines Zeichen sein um das folgende Zeichen Zu initialisieren)
+    -> *<Datentyp>*
+    -> "<Attributname>"
+    -> -<Wert>-
+- Serializer soll Fehler ignorieren ODER einlesen abbrechen
+
+- Vielleicht gibt es auch schon fertige Serializer
+- JSON ?
+
+Serializer soll nach festem Muster Daten einlesen und dann schon wissen welches Attribut dazu gehört.
+Instanz Daten (Attributwerte) müssen immer vollständig abgespeichert werden.
+Bei Änderung der Hauptklasse muss der Serializer wissen, welche Werte er nicht, aus dem vorhandenen Datensatz erstellen kann.
+Diese Daten müssen dann mit "null" initialisiert werden.
