@@ -17,7 +17,6 @@ public class CharacterContainer implements Serializable {
 
     private static CharacterContainer instance = null;
     private final ArrayList<Character> container;
-    private Serializer serializer;
 
     private CharacterContainer() {
         this.container = new ArrayList<>();
@@ -71,10 +70,6 @@ public class CharacterContainer implements Serializable {
                 return character;
         }
         return null;
-    }
-
-    public void setSerializer(Serializer serializer) {
-        this.serializer = serializer;
     }
 
     @Override
