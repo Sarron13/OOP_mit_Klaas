@@ -4,9 +4,16 @@ import java.io.*;
 
 import com.fhkiel.oopproject.container.CharacterContainer;
 
-/**********************************************************
- * "CLASS-Description"
- **********************************************************/
+/********************************************************************
+ * Class-Description:
+ * The Serializer-Class contains methods to write to and read a file.
+ * The "writeData()" method writes the whole instance of a
+ * CharacterContainer into a file (serialization), which is described
+ * in the static String attribut "filename". The "readData()" method
+ * reads the content of the file, which is described in the static
+ * String attribut "filename" and converts this data back in to an
+ * instance of "CharacterContainer" (deserialization).
+ *******************************************************************/
 public class Serializer implements Serializable {
 
     // The serialVersionUID is important for version control
@@ -39,19 +46,4 @@ public class Serializer implements Serializable {
         }
     }
 
-    // MAIN-TEST
-    /*public static void main(String[] args) {
-        CharacterContainer container = CharacterContainer.getInstance();
-
-        // CREATE
-        Character grogu = new Character("Grogu", "Grogu", 50);
-        Character mando = new Character("Mando", "Grogu", 50);
-        Character boba = new Character("Boba", "Fett", 50);
-        container.addCharacter(grogu);
-        container.addCharacter(boba);
-        container.addCharacter(mando);
-        System.out.println(container);
-
-        Serializer.writeData(container);
-    }*/
 }
