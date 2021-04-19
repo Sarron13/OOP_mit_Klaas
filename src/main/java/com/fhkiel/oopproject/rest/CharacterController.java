@@ -7,6 +7,7 @@ import java.util.UUID;
 import com.fhkiel.oopproject.container.CharacterContainer;
 import com.fhkiel.oopproject.model.Character;
 import com.fhkiel.oopproject.model.CharacterNotFound;
+import com.fhkiel.oopproject.serialize.Serializer;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class CharacterController {
     @PostMapping(path = "/character", consumes = "application/json", produces = "application/json")
     public void addCharacter(@RequestBody Character c) {
         container.addCharacter(c);
+        container.save();
     }
 
     @GetMapping("/character")
@@ -33,9 +35,11 @@ public class CharacterController {
     }
 
     @PutMapping("/character")
-    public void updateCharacter(@RequestBody Character c){
-        if(container.updateCharacter(c) == null)
+    public void updateCharacter(@RequestBody Character c) {
+        if (container.updateCharacter(c) == null)
             throw new CharacterNotFound(c.getId());
+        else
+            container.save();
     }
 
     @GetMapping("/character/search")
@@ -50,9 +54,11 @@ public class CharacterController {
     //Not tested yet
     @DeleteMapping("character/{id}")
     public void deleteCharacter(@PathVariable UUID id) {
-        if (!container.deleteByID(id)) {
+        if (!container.deleteByID(id))
             throw new CharacterNotFound(id);
-        }
+        else
+            container.save();
+
     }
 }
 

@@ -36,6 +36,10 @@ public class CharacterContainer implements Serializable {
         return container;
     }
 
+    public void save(){
+        Serializer.writeData(this);
+    }
+
     public final CharacterContainer addCharacter(Character character) {
         this.container.add(character);
         return this;
