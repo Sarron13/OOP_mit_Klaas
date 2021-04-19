@@ -33,6 +33,6 @@ build/
 .vscode/
 
 ### Persistent Data ###
-.bode
-.ser
-.data
+*.bode
+*.ser
+*.data
