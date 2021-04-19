@@ -1,0 +1,10 @@
+com\fhkiel\oopproject\container\CharacterContainer.class
+com\fhkiel\oopproject\model\Character.class
+com\fhkiel\oopproject\model\CharacterNotFound.class
+com\fhkiel\oopproject\serialize\Serializer.class
+com\fhkiel\oopproject\container\Main.class
+com\fhkiel\oopproject\rest\CharacterController.class
+com\fhkiel\oopproject\rest\ProjectApplication.class
+com\fhkiel\oopproject\model\TestData.class
+com\fhkiel\oopproject\Greeting.class
+com\fhkiel\oopproject\serialize\FileCreater.class

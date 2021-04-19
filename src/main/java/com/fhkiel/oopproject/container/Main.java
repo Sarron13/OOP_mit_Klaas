@@ -19,23 +19,12 @@ public class Main {
         container.addCharacter(boba);
         container.addCharacter(mando);
         System.out.println(container);
-        //System.out.println("Save Container");
-        //Serializer.writeData(container);
         System.out.println("Read Container");
-        System.out.println(Serializer.readData());
-        CharacterContainer newContainer = Serializer.readData();
-
-        newContainer.search("Grogu");
-
-        /*
-         * //UPDATE grogu.setLastname("Yoda"); container.updateCharacter(grogu);
-         * System.out.println(container);
-         * 
-         * //READ List<Character> myList = container.getAllCharacters(); for (Character
-         * c : myList) { System.out.println(c); }
-         * System.out.println(container.search("Z"));
-         * 
-         * //DELETE container.deleteByID(grogu.getId()); System.out.println(container);
-         */
+        try {
+            System.out.println(Serializer.readData());
+            CharacterContainer newContainer = Serializer.readData();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
