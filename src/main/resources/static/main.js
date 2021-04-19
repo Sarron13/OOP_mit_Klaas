@@ -1,5 +1,5 @@
 const actionTableElement = `<div class="actions">
-                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal">Edit
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="loadCharAttributs(event)">Edit
                                 </button>
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete
                                 </button>
@@ -47,6 +47,37 @@ async function addChar() {
         throw new Error(errorMessage);
     } else {
         console.log("new Character added!");
+        loadChars();
+        document.getElementById("closeAdd").click();
+        form.reset();
+    }
+}
+
+function loadCharAttributs(event) {
+    console.log(event.target.parentNode.parentNode.parentNode.childNodes);
+    let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
+
+    document.getElementById("vorname-edit").value = tdElements[1].innerHTML;
+    document.getElementById("nachname-edit").value = tdElements[2].innerHTML;
+    document.getElementById("alter-edit").value = tdElements[3].innerHTML;
+}
+
+async function editChar(event) {
+    let form = document.querySelector('#editCharForm');
+    let formData = new FormData(form);
+    let json = JSON.stringify(Object.fromEntries(formData.entries()));
+    const response = await fetch(APIURL, {
+        method: "Put",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json
+    });
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+    } else {
+        console.log("Character edited!");
         loadChars();
         document.getElementById("closeAdd").click();
         form.reset();
