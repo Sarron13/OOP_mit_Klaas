@@ -16,22 +16,17 @@ import com.fhkiel.oopproject.container.CharacterContainer;
  *******************************************************************/
 public class Serializer implements Serializable {
 
-    // The serialVersionUID is important for version control
     @Serial
     private static final long serialVersionUID = 1L;
 
     private static final String filename = "CharacterData.bode";
 
-    public static CharacterContainer readData() {
+    public static CharacterContainer readData() throws IOException, ClassNotFoundException {
         CharacterContainer characterData = null;
-        try {
-            FileInputStream fileInput = new FileInputStream(filename);
-            ObjectInputStream dataInput = new ObjectInputStream(fileInput);
-            characterData = (CharacterContainer) dataInput.readObject();
-            dataInput.close();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        FileInputStream fileInput = new FileInputStream(filename);
+        ObjectInputStream dataInput = new ObjectInputStream(fileInput);
+        characterData = (CharacterContainer) dataInput.readObject();
+        dataInput.close();
         return characterData;
     }
 

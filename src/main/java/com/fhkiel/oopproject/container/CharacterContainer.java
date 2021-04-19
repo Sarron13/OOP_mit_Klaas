@@ -11,15 +11,18 @@ import java.util.UUID;
 
 public class CharacterContainer implements Serializable {
 
-    // The serialVersionUID is important for version control
     @Serial
     private static final long serialVersionUID = 1L;
 
     private static CharacterContainer instance = null;
-    private final ArrayList<Character> container;
+    private ArrayList<Character> container;
 
     private CharacterContainer() {
-        this.container = new ArrayList<>();
+        try {
+            this.container = Serializer.readData().getAllCharacters();
+        } catch (Exception e) {
+            this.container = new ArrayList<>();
+        }
     }
 
     public static CharacterContainer getInstance() {
