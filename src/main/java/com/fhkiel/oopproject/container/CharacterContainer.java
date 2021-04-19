@@ -3,19 +3,26 @@ package com.fhkiel.oopproject.container;
 import com.fhkiel.oopproject.model.Character;
 import com.fhkiel.oopproject.serialize.Serializer;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CharacterContainer {
+public class CharacterContainer implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private static CharacterContainer instance = null;
-    private final ArrayList<Character> container;
-    private Serializer serializer;
-
+    private ArrayList<Character> container;
 
     private CharacterContainer() {
-        this.container = new ArrayList<Character>();
+        try {
+            this.container = Serializer.readData().getAllCharacters();
+        } catch (Exception e) {
+            this.container = new ArrayList<>();
+        }
     }
 
     public static CharacterContainer getInstance() {
@@ -35,7 +42,7 @@ public class CharacterContainer {
     }
 
     public List<Character> search(String searchString) {
-        List<Character> matchedCharacters = new ArrayList<Character>();
+        List<Character> matchedCharacters = new ArrayList<>();
         for (Character c : this.getAllCharacters()) {
             if (c.matches(searchString))
                 matchedCharacters.add(c);
@@ -52,9 +59,10 @@ public class CharacterContainer {
 
     public boolean deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
-            if (container.get(i).getId().equals(id))
+            if (container.get(i).getId().equals(id)) {
                 container.remove(i);
-            return true;
+                return true;
+            }
         }
         return false;
     }
@@ -67,16 +75,13 @@ public class CharacterContainer {
         return null;
     }
 
-    public void setSerializer(Serializer serializer) {
-        this.serializer = serializer;
-    }
-
     @Override
     public String toString() {
-        String output = "";
+        StringBuilder sb = new StringBuilder();
         for (Character c : this.getAllCharacters()) {
-            output += c + "\n";
+            sb.append(c);
+            sb.append("\n");
         }
-        return output;
+        return sb.toString();
     }
 }

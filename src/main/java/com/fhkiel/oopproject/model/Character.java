@@ -1,10 +1,15 @@
 package com.fhkiel.oopproject.model;
 
+import java.io.Serializable;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Character {
+public class Character implements Serializable {
+
+    // The serialVersionUID is important for version control
+    private static final long serialVersionUID = 1L;
+
     private final UUID id;
     private String firstname;
     private String lastname;
@@ -66,10 +71,14 @@ public class Character {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Character)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Character))
+            return false;
         Character character = (Character) o;
-        return getAge() == character.getAge() && Objects.equals(id, character.id) && Objects.equals(getFirstname(), character.getFirstname()) && Objects.equals(getLastname(), character.getLastname());
+        return getAge() == character.getAge() && Objects.equals(id, character.id)
+                && Objects.equals(getFirstname(), character.getFirstname())
+                && Objects.equals(getLastname(), character.getLastname());
     }
 
     @Override
@@ -79,8 +88,6 @@ public class Character {
 
     @Override
     public String toString() {
-        return "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", age=" + age;
+        return "firstname='" + firstname + '\'' + ", lastname='" + lastname + '\'' + ", age=" + age;
     }
 }
