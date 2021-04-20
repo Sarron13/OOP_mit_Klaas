@@ -45,7 +45,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Character hinzufügen</h4>
-                <button type="button" class="btn-close" id="closeAdd" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                <button type="button" class="btn-close" id="closeAdd" data-bs-dismiss="modal" aria-label="Close"
+                        aria-hidden="true">
 
                 </button>
             </div>
@@ -66,7 +67,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-bs-dismiss="modal" >Abbrechen</button>
+                <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
                 <button class="btn btn-secondary" onclick="addChar()">Hinzufügen</button>
             </div>
         </div>
@@ -113,12 +114,12 @@
 <div id="deleteModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/api/delete.php" , method="GET">
-                <div class="modal-header">
-                    <h4 class="modal-title">Character löschen</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                </div>
-                <div class="modal-body">
+            <div class="modal-header">
+                <h4 class="modal-title">Character löschen</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteCharForm">
                     <div class="form-group">
                         <label>Vorname</label>
                         <input type="text" id="vorname-delete" class="form-control" readonly>
@@ -131,12 +132,12 @@
                     <p class="text-warning"><small>Diese Aktion kann nicht rückgängig gemacht
                         werden.</small></p>
                     <input type="hidden" name="id" id="char-id-delete"/>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Abbrechen">
-                    <input type="submit" class="btn btn-danger" value="Löschen">
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
+                <button class="btn btn-danger">Löschen</button>
+            </div>
         </div>
     </div>
 </div>
