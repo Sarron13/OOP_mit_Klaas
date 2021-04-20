@@ -36,3 +36,4 @@ build/
 *.bode
 *.ser
 *.data
+/target/
