@@ -56,10 +56,12 @@ async function addChar() {
 function loadCharAttributs(event) {
     console.log(event.target.parentNode.parentNode.parentNode.childNodes);
     let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
+    console.log(tdElements[0].parentNode.getAttribute("uuid"));
 
     document.getElementById("vorname-edit").value = tdElements[1].innerHTML;
     document.getElementById("nachname-edit").value = tdElements[2].innerHTML;
     document.getElementById("alter-edit").value = tdElements[3].innerHTML;
+    document.getElementById("id-edit").value = tdElements[0].parentNode.getAttribute("uuid");
 }
 
 async function editChar(event) {
@@ -79,7 +81,7 @@ async function editChar(event) {
     } else {
         console.log("Character edited!");
         loadChars();
-        document.getElementById("closeAdd").click();
+        document.getElementById("closeEdit").click();
         form.reset();
     }
 }
