@@ -5,7 +5,11 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Character implements Serializable {
+/**
+ * Abstract class for all characters providing methods for name matching and updating
+ */
+
+public abstract class Character implements Serializable {
 
     // The serialVersionUID is important for version control
     private static final long serialVersionUID = 1L;

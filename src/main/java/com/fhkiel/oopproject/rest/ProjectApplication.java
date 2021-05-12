@@ -3,6 +3,12 @@ package com.fhkiel.oopproject.rest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
+/**
+ * Entry Point for application
+ * Start tomcat server with Rest-Api and serving frontend as single index.html
+ * Server hosted on http://localhost:8080/
+ */
 @SpringBootApplication
 public class ProjectApplication {
 

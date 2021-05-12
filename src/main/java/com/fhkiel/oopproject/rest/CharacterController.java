@@ -10,6 +10,11 @@ import com.fhkiel.oopproject.model.CharacterNotFound;
 import com.fhkiel.oopproject.serialize.Serializer;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Spring rest controller providing urls for CRUD operations on the character container
+ *
+ */
+
 @RestController
 public class CharacterController {
 
