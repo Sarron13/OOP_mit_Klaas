@@ -47,18 +47,12 @@ public class CharacterController {
         return container.search(term);
     }
 
-    // To Do:
-    //  - add insert-Mapping
-
-
-    //Not tested yet
     @DeleteMapping("character/{id}")
     public void deleteCharacter(@PathVariable UUID id) {
         if (!container.deleteByID(id))
             throw new CharacterNotFound(id);
         else
             container.save();
-
     }
 }
 
