@@ -13,6 +13,12 @@ public class LordOfRingsChar extends Character {
         this.setFavoriteTobacco(tobacco);
     }
 
+    public LordOfRingsChar update(LordOfRingsChar c){
+        this.setFirstname(c.getFirstname()).setLastname(c.getLastname()).setAge(c.getAge());
+        this.setFavoriteTobacco(c.getFavoriteTobacco());
+        return this;
+    }
+
     public String getFavoriteTobacco() {
         return favoriteTobacco;
     }

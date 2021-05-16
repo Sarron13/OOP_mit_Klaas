@@ -12,6 +12,12 @@ public class StarWarsChar extends Character {
         this.setSpaceship(spaceship);
     }
 
+    public StarWarsChar update(StarWarsChar c){
+        this.setFirstname(c.getFirstname()).setLastname(c.getLastname()).setAge(c.getAge());
+        this.setSpaceship(c.getSpaceship());
+        return this;
+    }
+
     public String getSpaceship() {
         return spaceship;
     }

@@ -15,12 +15,35 @@ public class CharacterController {
 
     private final CharacterContainer container = CharacterContainer.getInstance();
 
+    /**
+     *
+     * @param c json object with format:
+     *          {
+     *              "@type": "LotR",
+     *              "firstname": "Lukas",
+     *              "lastname": "Klink",
+     *              "age": 20,
+     *              "favoriteTobacco": "Halfling's Leaf"
+     *          }
+     *          {
+     *              "@type": "StarWars",
+     *              "firstname": "Klaas",
+     *              "lastname": "Pelzer",
+     *              "age": 20,
+     *              "spaceship": "Flying Hwak2"
+     *          }
+     *          at "@type" you choose character class, "StarWars" or "LotR"
+      */
     @PostMapping(path = "/character", consumes = "application/json", produces = "application/json")
     public void addCharacter(@RequestBody Character c) {
         container.addCharacter(c);
         container.save();
     }
 
+    /**
+     *
+     * @return json object with all characters
+     */
     @GetMapping("/character")
     public List<Character> getCharacters() {
         return container.getAllCharacters();
@@ -34,6 +57,10 @@ public class CharacterController {
             throw new CharacterNotFound(id);
     }
 
+    /**
+     *
+     * @param c json object same as post method
+     */
     @PutMapping("/character")
     public void updateCharacter(@RequestBody Character c) {
         if (container.updateCharacter(c) == null)
