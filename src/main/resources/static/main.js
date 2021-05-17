@@ -25,6 +25,7 @@ function renderTable(json) {
     tableBody.innerHTML = "";
     json.forEach(element => {
         let row = tableBody.insertRow(-1);
+        row.classList.add("charRow");
         row.setAttribute("uuid", element.id);
         row.setAttribute("type", element['@type']);
         row.insertCell(-1).innerHTML = rowCounter.toString();
@@ -35,6 +36,22 @@ function renderTable(json) {
         row.insertCell(-1).innerHTML = actionTableElement;
         rowCounter++;
     });
+}
+
+function loadCharAttributes(event) {
+    let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
+    for (let element of document.querySelectorAll(".vorname-edit")) {
+        element.value = tdElements[2].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".nachname-edit")) {
+        element.value = tdElements[3].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".alter-edit")) {
+        element.value = tdElements[4].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".id-edit")) {
+        element.value = tdElements[0].parentNode.getAttribute("uuid");
+    }
 }
 
 async function addChar() {
@@ -59,21 +76,17 @@ async function addChar() {
     }
 }
 
-function loadCharAttributes(event) {
-    let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
-    for (let element of document.querySelectorAll(".vorname-edit")) {
-        element.value = tdElements[1].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".nachname-edit")) {
-        element.value = tdElements[2].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".alter-edit")) {
-        element.value = tdElements[3].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".id-edit")) {
-        element.value = tdElements[0].parentNode.getAttribute("uuid");
+function changeExtraAttribute() {
+    const formElement = document.querySelector('#addCharForm');
+    const form = createObjFromForm(formElement);
+    const extraInput = document.getElementById("extraAttr");
+    if (form["@type"] === "StarWars") {
+        extraInput.innerHTML = starWarsInput;
+    } else if (form["@type"] === "LotR") {
+        extraInput.innerHTML = lotrInput;
     }
 }
+
 
 async function editChar() {
     const formElement = document.querySelector('#editCharForm');
@@ -101,7 +114,7 @@ async function editChar() {
     }
 }
 
-async function deleteChar(){
+async function deleteChar() {
     const formElement = document.querySelector('#deleteCharForm');
     const formData = createObjFromForm(formElement);
     const id = formData.id;
@@ -122,14 +135,16 @@ async function deleteChar(){
     }
 }
 
-function changeExtraAttribute() {
-    const formElement = document.querySelector('#addCharForm');
-    const form = createObjFromForm(formElement);
-    const extraInput = document.getElementById("extraAttr");
-    if (form["@type"] === "StarWars") {
-        extraInput.innerHTML = starWarsInput;
-    } else if (form["@type"] === "LotR") {
-        extraInput.innerHTML = lotrInput;
+async function search(event) {
+    event.preventDefault();
+    const searchTerm = document.getElementById("searchTerm").value;
+    const response = await fetch(`${APIURL}search?term=${searchTerm}`);
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw  new Error(errorMessage);
+    } else {
+        const json = await response.json();
+        renderTable(json);
     }
 }
 
@@ -138,15 +153,3 @@ function createObjFromForm(formElement) {
     return Object.fromEntries(formData.entries());
 }
 
-async function search(event){
-    event.preventDefault();
-    const searchTerm = document.getElementById("searchTerm").value;
-    const response = await fetch(`${APIURL}search?term=${searchTerm}`);
-    if(!response.ok){
-        const errorMessage = await response.text();
-        throw  new Error(errorMessage);
-    } else {
-        const json = await response.json();
-        renderTable(json);
-    }
-}
