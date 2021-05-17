@@ -13,8 +13,8 @@
     <header class="py-3 m-3 border-bottom">
         <div class="container-fluid d-grid gap-4 align-items-center" style="grid-template-columns: 1fr 2fr 1fr;">
             <h2>Character Overview</h2>
-            <form action="" class="w-100 me-3">
-                <input type="search" class="form-control" placeholder="Search...">
+            <form class="w-100 me-3" onsubmit="search(event)">
+                <input type="search" class="form-control" id = "searchTerm"placeholder="Search...">
             </form>
             <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addModal">Character
                 hinzufügen

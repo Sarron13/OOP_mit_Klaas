@@ -137,3 +137,16 @@ function createObjFromForm(formElement) {
     const formData = new FormData(formElement);
     return Object.fromEntries(formData.entries());
 }
+
+async function search(event){
+    event.preventDefault();
+    const searchTerm = document.getElementById("searchTerm").value;
+    const response = await fetch(`${APIURL}search?term=${searchTerm}`);
+    if(!response.ok){
+        const errorMessage = await response.text();
+        throw  new Error(errorMessage);
+    } else {
+        const json = await response.json();
+        renderTable(json);
+    }
+}
