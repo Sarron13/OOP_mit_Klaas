@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" lang="de">
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>Character Rest</title>
@@ -54,13 +54,13 @@
                 <form id="addCharForm" onsubmit="addChar(e)">
                     <div class="form-group">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="universe" id="universeStarWars">
+                            <input class="form-check-input" type="radio" name="@type" value="StarWars" id="universeStarWars" onchange="changeExtraAttribute()">
                             <label class="form-check-label" for="universeStarWars">
                                 Star Wars
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="universe" id="universeLotR" checked>
+                            <input class="form-check-input" type="radio" name="@type" value="LotR" id="universeLotR" onchange="changeExtraAttribute()" checked>
                             <label class="form-check-label" for="universeLotR">
                                 Herr der Ringe
                             </label>
@@ -77,6 +77,10 @@
                     <div class="form-group">
                         <label>Alter</label>
                         <input type="number" name="age" class="form-control" required>
+                    </div>
+                    <div class="form-group" id="extraAttr">
+                        <label id="extraLabel">Lieblingstabak</label>
+                        <input type="text" name="favoriteTobacco" class="form-control" required>
                     </div>
                 </form>
             </div>
@@ -100,20 +104,20 @@
                 <form id="editCharForm">
                     <div class="form-group">
                         <label>Vorname</label>
-                        <input type="text" name="firstname" id="vorname-edit" class="form-control"
+                        <input type="text" name="firstname"  class="form-control vorname-edit"
                                required>
                     </div>
                     <div class="form-group">
                         <label>Nachname</label>
-                        <input type="text" name="lastname" id="nachname-edit" class="form-control"
+                        <input type="text" name="lastname"  class="form-control nachname-edit"
                                required>
                     </div>
                     <div class="form-group">
                         <label>Alter</label>
-                        <input type="text" name="age" id="alter-edit" class="form-control" required>
+                        <input type="text" name="age"  class="form-control alter-edit" required>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" name="id" id="id-edit" class="form-control" required>
+                        <input type="hidden" name="id"  class="form-control id-edit" required>
                     </div>
                 </form>
             </div>
@@ -130,27 +134,27 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Character löschen</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                <button type="button" class="btn-close" id="closeDelete" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div class="modal-body">
                 <form id="deleteCharForm">
                     <div class="form-group">
                         <label>Vorname</label>
-                        <input type="text" id="vorname-delete" class="form-control" readonly>
+                        <input type="text"  class="form-control vorname-edit" readonly>
                     </div>
                     <div class="form-group">
                         <label>Nachname</label>
-                        <input type="text" id="nachname-delete" class="form-control" readonly>
+                        <input type="text" class="form-control nachname-edit" readonly>
                     </div>
                     <p>Sind Sie sich sicher diesen Character zu löschen?</p>
                     <p class="text-warning"><small>Diese Aktion kann nicht rückgängig gemacht
                         werden.</small></p>
-                    <input type="hidden" name="id" id="char-id-delete"/>
+                    <input type="hidden" name="id" class="id-edit"/>
                 </form>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
-                <button class="btn btn-danger">Löschen</button>
+                <button class="btn btn-danger" onclick="deleteChar()">Löschen</button>
             </div>
         </div>
     </div>

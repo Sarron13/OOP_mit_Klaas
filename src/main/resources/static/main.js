@@ -1,13 +1,19 @@
 const actionTableElement = `<div class="actions">
-                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="loadCharAttributs(event)">Edit
+                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="loadCharAttributes(event)">Edit
                                 </button>
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="loadCharAttributes(event)">Delete
                                 </button>
                             </div>`;
-const APIURL = "http://localhost:8080/character/"
+const lotrInput = `<label id="extraLabel">Lieblingstabak</label>
+                   <input type="text" name="favoriteTobacco" class="form-control" required>`
+
+const starWarsInput = `<label id="extraLabel">Raumschiff</label>
+                   <input type="text" name="spaceship" class="form-control" required>`;
+
+
+const APIURL = "http://localhost:8080/character/";
 
 function loadChars() {
-    let json;
     fetch(APIURL)
         .then(response => response.json())
         .then(data => renderTable(data));
@@ -17,10 +23,10 @@ function renderTable(json) {
     let rowCounter = 1;
     let tableBody = document.querySelector('tbody')
     tableBody.innerHTML = "";
-    console.log(json)
     json.forEach(element => {
         let row = tableBody.insertRow(-1);
         row.setAttribute("uuid", element.id);
+        row.setAttribute("type", element['@type']);
         row.insertCell(-1).innerHTML = rowCounter.toString();
         row.insertCell(-1).innerHTML = element['firstname'];
         row.insertCell(-1).innerHTML = element['lastname'];
@@ -34,7 +40,6 @@ async function addChar() {
     let form = document.querySelector('#addCharForm');
     let formData = new FormData(form);
     let json = JSON.stringify(Object.fromEntries(formData.entries()));
-    console.log(json);
     const response = await fetch(APIURL, {
         method: "Post",
         headers: {
@@ -53,21 +58,30 @@ async function addChar() {
     }
 }
 
-function loadCharAttributs(event) {
-    console.log(event.target.parentNode.parentNode.parentNode.childNodes);
+function loadCharAttributes(event) {
     let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
-    console.log(tdElements[0].parentNode.getAttribute("uuid"));
-
-    document.getElementById("vorname-edit").value = tdElements[1].innerHTML;
-    document.getElementById("nachname-edit").value = tdElements[2].innerHTML;
-    document.getElementById("alter-edit").value = tdElements[3].innerHTML;
-    document.getElementById("id-edit").value = tdElements[0].parentNode.getAttribute("uuid");
+    for (let element of document.querySelectorAll(".vorname-edit")) {
+        element.value = tdElements[1].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".nachname-edit")) {
+        element.value = tdElements[2].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".alter-edit")) {
+        element.value = tdElements[3].innerHTML;
+    }
+    for (let element of document.querySelectorAll(".id-edit")) {
+        element.value = tdElements[0].parentNode.getAttribute("uuid");
+    }
 }
 
-async function editChar(event) {
-    let form = document.querySelector('#editCharForm');
-    let formData = new FormData(form);
-    let json = JSON.stringify(Object.fromEntries(formData.entries()));
+async function editChar() {
+    const formElement = document.querySelector('#editCharForm');
+    const formData = createObjFromForm(formElement);
+    const type = document.querySelector(`tr[uuid="${formData.id}"]`).getAttribute('type');
+    formData["@type"] = type;
+    const json = JSON.stringify(formData);
+
+    console.log(json);
     const response = await fetch(APIURL, {
         method: "Put",
         headers: {
@@ -82,6 +96,43 @@ async function editChar(event) {
         console.log("Character edited!");
         loadChars();
         document.getElementById("closeEdit").click();
-        form.reset();
+        formElement.reset();
     }
+}
+
+async function deleteChar(){
+    const formElement = document.querySelector('#deleteCharForm');
+    const formData = createObjFromForm(formElement);
+    const id = formData.id;
+    const response = await fetch(APIURL + id, {
+        method: "Delete",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw  new Error(errorMessage);
+    } else {
+        console.log("Character deleted");
+        loadChars();
+        document.getElementById("closeDelete").click();
+        formElement.reset();
+    }
+}
+
+function changeExtraAttribute() {
+    const formElement = document.querySelector('#addCharForm');
+    const form = createObjFromForm(formElement);
+    const extraInput = document.getElementById("extraAttr");
+    if (form["@type"] === "StarWars") {
+        extraInput.innerHTML = starWarsInput;
+    } else if (form["@type"] === "LotR") {
+        extraInput.innerHTML = lotrInput;
+    }
+}
+
+function createObjFromForm(formElement) {
+    const formData = new FormData(formElement);
+    return Object.fromEntries(formData.entries());
 }
