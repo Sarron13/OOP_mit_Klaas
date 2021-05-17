@@ -28,6 +28,7 @@ function renderTable(json) {
         row.setAttribute("uuid", element.id);
         row.setAttribute("type", element['@type']);
         row.insertCell(-1).innerHTML = rowCounter.toString();
+        row.insertCell(-1).innerHTML = '<img src=/images/LotR.jpg/>';//TODO: fix Cell-width and relative image path
         row.insertCell(-1).innerHTML = element['firstname'];
         row.insertCell(-1).innerHTML = element['lastname'];
         row.insertCell(-1).innerHTML = element['age'];
