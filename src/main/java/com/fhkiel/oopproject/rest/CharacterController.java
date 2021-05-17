@@ -48,6 +48,7 @@ public class CharacterController {
     /**
      *
      * @return json object with all characters
+
      */
     @GetMapping("/character")
     public List<Character> getCharacters() {
@@ -64,7 +65,15 @@ public class CharacterController {
 
     /**
      *
-     * @param c json object same as post method
+     * @param c json object with id and attibutes
+     *      {
+     *         "@type": "StarWars",
+     *         "id": "c1aaa023-a735-4b1f-9b9f-895e2c970dc8",
+     *         "firstname": "Klaas",
+     *         "lastname": "Pelzer1",
+     *         "age": 21,
+     *         "spaceship": "Flying Hwak2"
+     *     }
      */
     @PutMapping("/character")
     public void updateCharacter(@RequestBody Character c) {
