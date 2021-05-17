@@ -15,7 +15,6 @@ import java.util.UUID;
  */
 public class CharacterContainer implements Serializable {
 
-
     @Serial
     private static final long serialVersionUID = 1L;
 
