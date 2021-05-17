@@ -8,6 +8,11 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Abstract class for all characters providing methods for name matching and updating
+ */
+
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = LordOfRingsChar.class, name = "LotR"),
@@ -15,6 +20,7 @@ import java.util.UUID;
 })
 public abstract class Character implements Serializable {
 
+    // The serialVersionUID is important for version control
     private static final long serialVersionUID = 1L;
 
     private final UUID id;

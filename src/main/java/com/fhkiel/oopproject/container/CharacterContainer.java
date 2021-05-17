@@ -9,7 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Container for created characters with basic CRUD functionality
+ * Implemented as singleton and Serializable to save the data on a hard drive
+ */
 public class CharacterContainer implements Serializable {
+
 
     @Serial
     private static final long serialVersionUID = 1L;
