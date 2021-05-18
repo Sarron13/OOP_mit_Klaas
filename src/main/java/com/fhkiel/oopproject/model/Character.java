@@ -34,10 +34,8 @@ public abstract class Character implements Serializable {
 
     }
 
-    public final Character update(Character c) {
-        this.setFirstname(c.getFirstname()).setLastname(c.getLastname()).setAge(c.getAge());
-        return this;
-    }
+
+    public abstract Character accept(UpdateVisitor v, Character c);
 
     public boolean matches(String searchString) {
         return this.matchesFirstname(searchString) || this.matchesLastname(searchString);
@@ -86,9 +84,8 @@ public abstract class Character implements Serializable {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Character))
+        if (!(o instanceof Character character))
             return false;
-        Character character = (Character) o;
         return getAge() == character.getAge() && Objects.equals(id, character.id)
                 && Objects.equals(getFirstname(), character.getFirstname())
                 && Objects.equals(getLastname(), character.getLastname());

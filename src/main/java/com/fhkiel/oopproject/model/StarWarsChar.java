@@ -1,6 +1,5 @@
 package com.fhkiel.oopproject.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("StarWars")
@@ -12,7 +11,7 @@ public class StarWarsChar extends Character {
         this.setSpaceship(spaceship);
     }
 
-    public StarWarsChar update(StarWarsChar c){
+    public StarWarsChar update(StarWarsChar c) {
         this.setFirstname(c.getFirstname()).setLastname(c.getLastname()).setAge(c.getAge());
         this.setSpaceship(c.getSpaceship());
         return this;
@@ -24,5 +23,10 @@ public class StarWarsChar extends Character {
 
     public void setSpaceship(String spaceship) {
         this.spaceship = spaceship;
+    }
+
+    @Override
+    public Character accept(UpdateVisitor v, Character c) {
+        return v.visit(this, c);
     }
 }

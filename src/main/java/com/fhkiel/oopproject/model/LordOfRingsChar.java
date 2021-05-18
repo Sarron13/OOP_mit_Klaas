@@ -1,7 +1,5 @@
 package com.fhkiel.oopproject.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("LotR")
@@ -25,5 +23,10 @@ public class LordOfRingsChar extends Character {
 
     public void setFavoriteTobacco(String favoriteTobacco) {
         this.favoriteTobacco = favoriteTobacco;
+    }
+
+    @Override
+    public Character accept(UpdateVisitor v, Character c) {
+        return v.visit(this, c);
     }
 }

@@ -1,8 +1,7 @@
 package com.fhkiel.oopproject.container;
 
 import com.fhkiel.oopproject.model.Character;
-import com.fhkiel.oopproject.model.LordOfRingsChar;
-import com.fhkiel.oopproject.model.StarWarsChar;
+import com.fhkiel.oopproject.model.UpdateVisitor;
 import com.fhkiel.oopproject.serialize.Serializer;
 
 import java.io.Serial;
@@ -38,6 +37,7 @@ public class CharacterContainer implements Serializable {
         return instance;
     }
 
+
     public ArrayList<Character> getAllCharacters() {
         return container;
     }
@@ -62,11 +62,8 @@ public class CharacterContainer implements Serializable {
 
     public Character updateCharacter(Character c) {
         Character result = this.findById(c.getId());
-        if (result instanceof StarWarsChar) {
-            return ((StarWarsChar)result).update((StarWarsChar)c);
-        }
-        else if (result instanceof LordOfRingsChar)
-            return ((LordOfRingsChar)result).update((LordOfRingsChar) c);
+        if (result != null)
+            return result.accept(new UpdateVisitor(), c);
         else
             return null;
     }
