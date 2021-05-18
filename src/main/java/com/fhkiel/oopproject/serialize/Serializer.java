@@ -36,9 +36,9 @@ public class Serializer implements Serializable {
             ObjectOutputStream dataOutput = new ObjectOutputStream(fileOutput);
             dataOutput.writeObject(dataToWrite);
             dataOutput.close();
+            fileOutput.close();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
-
 }
