@@ -35,7 +35,7 @@ public abstract class Character implements Serializable {
     }
 
 
-    public abstract Character accept(UpdateVisitor v, Character c);
+    public abstract Character acceptUpdater(UpdateVisitor v, Character c);
 
     public boolean matches(String searchString) {
         return this.matchesFirstname(searchString) || this.matchesLastname(searchString);

@@ -63,7 +63,7 @@ public class CharacterContainer implements Serializable {
     public Character updateCharacter(Character c) {
         Character result = this.findById(c.getId());
         if (result != null)
-            return result.accept(new UpdateVisitor(), c);
+            return result.acceptUpdater(new UpdateVisitor(), c);
         else
             return null;
     }

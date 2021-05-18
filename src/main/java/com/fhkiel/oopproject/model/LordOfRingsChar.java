@@ -26,7 +26,7 @@ public class LordOfRingsChar extends Character {
     }
 
     @Override
-    public Character accept(UpdateVisitor v, Character c) {
+    public Character acceptUpdater(UpdateVisitor v, Character c) {
         return v.visit(this, c);
     }
 }
