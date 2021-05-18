@@ -29,7 +29,9 @@ function renderTable(json) {
         row.setAttribute("uuid", element.id);
         row.setAttribute("type", element['@type']);
         row.insertCell(-1).innerHTML = rowCounter.toString();
-        row.insertCell(-1).innerHTML = "<img src=/images/"+element['@type']+".jpg/>"; // TODO: fix Cell-width
+        row.cells[0].className = "rowCount";
+        row.insertCell(-1).className = "icon";
+        row.cells[1].innerHTML = "<img src=/images/"+element['@type']+".jpg/>";
         row.insertCell(-1).innerHTML = element['firstname'];
         row.insertCell(-1).innerHTML = element['lastname'];
         row.insertCell(-1).innerHTML = element['age'];

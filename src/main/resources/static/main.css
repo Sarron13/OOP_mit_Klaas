@@ -10,6 +10,14 @@ img {
     border-radius: 50%;
 }
 
+.icon {
+    width: 80px;
+}
+
+.rowCount {
+    width: 40px;
+}
+
 .charRow{
     cursor: pointer;
 }
