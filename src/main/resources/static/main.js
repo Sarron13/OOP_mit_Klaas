@@ -16,7 +16,7 @@ const APIURL = "http://localhost:8080/character/";
 function loadChars() {
     fetch(APIURL)
         .then(response => response.json())
-        .then(data => renderTable(data));
+        .then(json => renderTable(json));
 }
 
 function renderTable(json) {
@@ -49,20 +49,20 @@ function loadCharAttributes(event) {
     const uuid = event.target.getAttribute('uuid');
     fetch(APIURL + uuid)
         .then(response => response.json())
-        .then(data => {
+        .then(json => {
             for (let element of document.querySelectorAll(".vorname-edit")) {
-                element.value = data.firstname;
+                element.value = json.firstname;
             }
             for (let element of document.querySelectorAll(".nachname-edit")) {
-                element.value = data.lastname;
+                element.value = json.lastname;
             }
             for (let element of document.querySelectorAll(".alter-edit")) {
-                element.value = data.age;
+                element.value = json.age;
             }
             for (let element of document.querySelectorAll(".id-edit")) {
-                element.value = data.id;
+                element.value = json.id;
             }
-            changeExtraAttributes(data);
+            changeExtraAttributes(json);
         });
 }
 
@@ -100,13 +100,13 @@ function changeExtraAttributes(charModel) {
         if (charModel["@type"] === "StarWars") {
             element.innerHTML = starWarsInput;
             const edit = document.querySelector(".editextraAttr .starWarsInput")
-            if(edit)
+            if (edit)
                 edit.value = charModel["spaceship"];
 
         } else if (charModel["@type"] === "LotR") {
             element.innerHTML = lotrInput;
             const edit = document.querySelector(".editextraAttr .lotrInput")
-            if(edit)
+            if (edit)
                 edit.value = charModel["favoriteTobacco"];
         }
     }

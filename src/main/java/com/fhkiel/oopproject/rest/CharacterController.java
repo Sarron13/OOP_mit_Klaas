@@ -7,7 +7,6 @@ import java.util.UUID;
 import com.fhkiel.oopproject.container.CharacterContainer;
 import com.fhkiel.oopproject.model.Character;
 import com.fhkiel.oopproject.model.CharacterNotFound;
-import com.fhkiel.oopproject.serialize.Serializer;
 import org.springframework.web.bind.annotation.*;
 
 /**
