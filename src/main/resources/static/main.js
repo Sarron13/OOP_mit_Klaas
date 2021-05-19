@@ -5,10 +5,10 @@ const actionTableElement = `<div class="actions">
                                 </button>
                             </div>`;
 const lotrInput = `<label id="extraLabel">Lieblingstabak</label>
-                   <input type="text" name="favoriteTobacco" class="form-control" required>`
+                   <input type="text" name="favoriteTobacco" class="form-control lotrInput" required>`
 
 const starWarsInput = `<label id="extraLabel">Raumschiff</label>
-                   <input type="text" name="spaceship" class="form-control" required>`;
+                   <input type="text" name="spaceship" class="form-control starWarsInput" required>`;
 
 
 const APIURL = "http://localhost:8080/character/";
@@ -31,29 +31,39 @@ function renderTable(json) {
         row.insertCell(-1).innerHTML = rowCounter.toString();
         row.cells[0].className = "rowCount";
         row.insertCell(-1).className = "icon";
-        row.cells[1].innerHTML = "<img src=/images/"+element['@type']+".jpg/>";
+        row.cells[1].innerHTML = "<img src=/images/" + element['@type'] + ".jpg/>";
         row.insertCell(-1).innerHTML = element['firstname'];
         row.insertCell(-1).innerHTML = element['lastname'];
         row.insertCell(-1).innerHTML = element['age'];
-        row.insertCell(-1).innerHTML = actionTableElement;
+        const actionCell = row.insertCell(-1);
+        actionCell.innerHTML = actionTableElement;
+        const buttons = actionCell.querySelectorAll("button");
+        for (const button of buttons) {
+            button.setAttribute('uuid', element.id);
+        }
         rowCounter++;
     });
 }
 
 function loadCharAttributes(event) {
-    let tdElements = event.target.parentNode.parentNode.parentNode.childNodes; // Contains all character attributs
-    for (let element of document.querySelectorAll(".vorname-edit")) {
-        element.value = tdElements[2].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".nachname-edit")) {
-        element.value = tdElements[3].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".alter-edit")) {
-        element.value = tdElements[4].innerHTML;
-    }
-    for (let element of document.querySelectorAll(".id-edit")) {
-        element.value = tdElements[0].parentNode.getAttribute("uuid");
-    }
+    const uuid = event.target.getAttribute('uuid');
+    fetch(APIURL + uuid)
+        .then(response => response.json())
+        .then(data => {
+            for (let element of document.querySelectorAll(".vorname-edit")) {
+                element.value = data.firstname;
+            }
+            for (let element of document.querySelectorAll(".nachname-edit")) {
+                element.value = data.lastname;
+            }
+            for (let element of document.querySelectorAll(".alter-edit")) {
+                element.value = data.age;
+            }
+            for (let element of document.querySelectorAll(".id-edit")) {
+                element.value = data.id;
+            }
+            changeExtraAttributes(data);
+        });
 }
 
 async function addChar() {
@@ -78,14 +88,27 @@ async function addChar() {
     }
 }
 
-function changeExtraAttribute() {
+function radioButtonChange() {
     const formElement = document.querySelector('#addCharForm');
     const form = createObjFromForm(formElement);
-    const extraInput = document.getElementById("extraAttr");
-    if (form["@type"] === "StarWars") {
-        extraInput.innerHTML = starWarsInput;
-    } else if (form["@type"] === "LotR") {
-        extraInput.innerHTML = lotrInput;
+    changeExtraAttributes(form);
+}
+
+function changeExtraAttributes(charModel) {
+    const extraInputs = document.querySelectorAll(".extraAttr");
+    for (const element of extraInputs) {
+        if (charModel["@type"] === "StarWars") {
+            element.innerHTML = starWarsInput;
+            const edit = document.querySelector(".editextraAttr .starWarsInput")
+            if(edit)
+                edit.value = charModel["spaceship"];
+
+        } else if (charModel["@type"] === "LotR") {
+            element.innerHTML = lotrInput;
+            const edit = document.querySelector(".editextraAttr .lotrInput")
+            if(edit)
+                edit.value = charModel["favoriteTobacco"];
+        }
     }
 }
 
