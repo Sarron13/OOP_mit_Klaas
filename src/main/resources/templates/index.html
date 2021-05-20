@@ -51,7 +51,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="addCharForm" onsubmit="addChar(e)">
+                <form id="addCharForm" onsubmit="addChar()">
                     <div class="form-group">
                         <div class="form-check">
                             <input autocomplete="off" class="form-check-input" type="radio" name="@type" value="StarWars" id="universeStarWars" onchange="changeExtraAttribute()">
@@ -85,8 +85,8 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary"><!--onclick="addChar()"-->Hinzufügen</button> //TODO: GET THE FOOTER IN THE FORM
                 <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
-                <button class="btn btn-secondary" onclick="addChar()">Hinzufügen</button>
             </div>
         </div>
     </div>

@@ -75,6 +75,7 @@ async function addChar() {
         loadChars();
         document.getElementById("closeAdd").click();
         form.reset();
+        changeExtraAttribute();
     }
 }
 
