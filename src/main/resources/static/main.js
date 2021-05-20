@@ -69,9 +69,8 @@ function loadCharAttributes(event) {
 
 async function addChar(event) {
     event.preventDefault();
-    let form = document.querySelector('#addCharForm');
-    let formData = new FormData(form);
-    let json = JSON.stringify(Object.fromEntries(formData.entries()));
+    let formElement = document.querySelector('#addCharForm');
+    let json = JSON.stringify(createObjFromForm(formElement));
     const response = await fetch(APIURL, {
         method: "Post",
         headers: {
@@ -83,11 +82,11 @@ async function addChar(event) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     } else {
-        console.log("new Character added!");
         loadChars();
         document.getElementById("closeAdd").click();
-        form.reset();
+        formElement.reset();
         document.getElementById('universeLotR').checked = true;
+        changeExtraAttributesAdd(createObjFromForm(formElement));
     }
 }
 
@@ -133,7 +132,6 @@ async function editChar() {
     formData["@type"] = document.querySelector(`tr[uuid="${formData.id}"]`).getAttribute('type');
     const json = JSON.stringify(formData);
 
-    console.log(json);
     const response = await fetch(APIURL, {
         method: "Put",
         headers: {
@@ -145,7 +143,6 @@ async function editChar() {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
     } else {
-        console.log("Character edited!");
         loadChars();
         document.getElementById("closeEdit").click();
         formElement.reset();
@@ -166,7 +163,6 @@ async function deleteChar() {
         const errorMessage = await response.text();
         throw  new Error(errorMessage);
     } else {
-        console.log("Character deleted");
         loadChars();
         document.getElementById("closeDelete").click();
         formElement.reset();
