@@ -64,6 +64,7 @@ function loadCharAttributes(event) {
             }
             changeExtraAttributes(json);
         });
+
 }
 
 async function addChar(event) {
@@ -86,18 +87,18 @@ async function addChar(event) {
         loadChars();
         document.getElementById("closeAdd").click();
         form.reset();
-        document.querySelector('.extraAttrAdd').innerHTML = "";
+        document.getElementById('universeLotR').checked = true;
     }
 }
 
 function radioButtonChange() {
     const formElement = document.querySelector('#addCharForm');
     const form = createObjFromForm(formElement);
-    changeExtraAttributes(form);
+    changeExtraAttributesAdd(form);
 }
 
 function changeExtraAttributes(charModel) {
-    const extraInputs = document.querySelectorAll(".extraAttr");
+    const extraInputs = document.querySelectorAll(".editextraAttr");
     for (const element of extraInputs) {
         if (charModel["@type"] === "StarWars") {
             element.innerHTML = starWarsInput;
@@ -114,12 +115,22 @@ function changeExtraAttributes(charModel) {
     }
 }
 
+function changeExtraAttributesAdd(form) {
+    const extraInputs = document.querySelectorAll(".extraAttrAdd");
+    for (const element of extraInputs) {
+        if (form["@type"] === "StarWars") {
+            element.innerHTML = starWarsInput;
+        } else if (form["@type"] === "LotR") {
+            element.innerHTML = lotrInput;
+        }
+    }
+}
+
 
 async function editChar() {
     const formElement = document.querySelector('#editCharForm');
     const formData = createObjFromForm(formElement);
-    const type = document.querySelector(`tr[uuid="${formData.id}"]`).getAttribute('type');
-    formData["@type"] = type;
+    formData["@type"] = document.querySelector(`tr[uuid="${formData.id}"]`).getAttribute('type');
     const json = JSON.stringify(formData);
 
     console.log(json);
@@ -178,5 +189,6 @@ async function search(event) {
 function createObjFromForm(formElement) {
     const formData = new FormData(formElement);
     return Object.fromEntries(formData.entries());
+
 }
 
