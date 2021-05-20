@@ -41,6 +41,9 @@ function renderTable(json) {
         for (const button of buttons) {
             button.setAttribute('uuid', element.id);
         }
+        row.setAttribute("data-bs-toggle", "modal");
+        row.setAttribute("data-bs-target", "#detailModal");
+        row.setAttribute("onclick", "loadCharAttributes(" + event + ")"); //TODO: Fix Parameter or write new method
         rowCounter++;
     });
 }
@@ -185,6 +188,4 @@ async function search(event) {
 function createObjFromForm(formElement) {
     const formData = new FormData(formElement);
     return Object.fromEntries(formData.entries());
-
 }
-

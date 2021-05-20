@@ -103,8 +103,8 @@
                 <button aria-hidden="true" class="btn-close" data-bs-dismiss="modal" id="closeEdit"
                         type="button"></button>
             </div>
-            <div class="modal-body">
-                <form id="editCharForm">
+            <form id="editCharForm">
+                <div class="modal-body">
                     <div class="form-group">
                         <label>Vorname</label>
                         <input autocomplete="off" class="form-control vorname-edit" name="firstname" required
@@ -120,18 +120,18 @@
                         <input autocomplete="off" class="form-control alter-edit" name="age" required type="text">
                     </div>
 
-                    <div class="form-group extraAttr editextraAttr">
+                    <div class="form-group extraAttr extraAttrEdit">
 
                     </div>
                     <div class="form-group">
                         <input autocomplete="off" class="form-control id-edit" name="id" required type="hidden">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <input class="btn btn-secondary" data-bs-dismiss="modal" type="button" value="Abbrechen">
-                <input class="btn btn-success" onclick="editChar()" type="submit" value="Bearbeiten">
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-secondary" data-bs-dismiss="modal" type="button" value="Abbrechen">
+                    <input class="btn btn-success" onclick="editChar()" type="submit" value="Bearbeiten">
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -164,6 +164,46 @@
                 <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
                 <button class="btn btn-danger" onclick="deleteChar()">Löschen</button>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Detail Modal HTML -->
+<div class="modal fade" id="detailModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Characterdetails</h4>
+                <button aria-hidden="true" class="btn-close" data-bs-dismiss="modal" id="closeDetail"
+                        type="button"></button>
+            </div>
+            <form id="detailCharForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Vorname</label>
+                        <input autocomplete="off" class="form-control vorname-detail" name="firstname" required
+                               type="text" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Nachname</label>
+                        <input autocomplete="off" class="form-control nachname-detail" name="lastname" required
+                               type="text" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Alter</label>
+                        <input autocomplete="off" class="form-control alter-detail" name="age" required type="text" disabled>
+                    </div>
+
+                    <div class="form-group extraAttr extraAttrDetail">
+
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" class="form-control id-detail" name="id" required type="hidden">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-secondary" data-bs-dismiss="modal" type="button" value="OK">
+                </div>
+            </form>
         </div>
     </div>
 </div>
