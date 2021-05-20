@@ -50,8 +50,8 @@
 
                 </button>
             </div>
-            <div class="modal-body">
-                <form id="addCharForm" onsubmit="addChar()">
+            <form id="addCharForm" onsubmit="addChar()">
+                <div class="modal-body">
                     <div class="form-group">
                         <div class="form-check">
                             <input autocomplete="off" class="form-check-input" type="radio" name="@type"
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-check">
                             <input autocomplete="off" class="form-check-input" type="radio" name="@type" value="LotR"
-                                   id="universeLotR" onchange="radioButtonChange()" checked>
+                                   id="universeLotR" onchange="radioButtonChange()"> // deleted keyword "checked" because of not showing extra attribute
                             <label autocomplete="off" class="form-check-label" for="universeLotR">
                                 Herr der Ringe
                             </label>
@@ -82,12 +82,12 @@
                     </div>
                     <div class="form-group extraAttr">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-secondary"><!--onclick="addChar()"-->Hinzufügen</button> //TODO: GET THE FOOTER IN THE FORM
-                <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary"><!--onclick="addChar()"-->Hinzufügen</button>
+                    <button class="btn btn-default" data-bs-dismiss="modal" onclick="resetForm()">Abbrechen</button> // We schould reset the Form when arborting
+                </div>
+            </form>
         </div>
     </div>
 </div>
