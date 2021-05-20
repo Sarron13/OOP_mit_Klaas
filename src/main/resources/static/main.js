@@ -85,7 +85,7 @@ async function addChar() {
         loadChars();
         document.getElementById("closeAdd").click();
         form.reset();
-        changeExtraAttribute(); //WHAT is charModel for an variable?!
+        changeExtraAttribute(form);
     }
 }
 
