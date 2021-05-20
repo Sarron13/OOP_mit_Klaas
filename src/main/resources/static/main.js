@@ -66,7 +66,8 @@ function loadCharAttributes(event) {
         });
 }
 
-async function addChar() {
+async function addChar(event) {
+    event.preventDefault();
     let form = document.querySelector('#addCharForm');
     let formData = new FormData(form);
     let json = JSON.stringify(Object.fromEntries(formData.entries()));
@@ -85,7 +86,7 @@ async function addChar() {
         loadChars();
         document.getElementById("closeAdd").click();
         form.reset();
-        changeExtraAttribute(form);
+        document.querySelector('.extraAttrAdd').innerHTML = "";
     }
 }
 

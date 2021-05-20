@@ -50,7 +50,7 @@
 
                 </button>
             </div>
-            <form id="addCharForm" onsubmit="addChar()">
+            <form id="addCharForm" onsubmit="addChar(event)">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-check">
@@ -80,12 +80,12 @@
                         <label>Alter</label>
                         <input autocomplete="off" type="number" name="age" class="form-control" required>
                     </div>
-                    <div class="form-group extraAttr">
+                    <div class="form-group extraAttr extraAttrAdd">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary">Hinzufügen</button>
-                    <button class="btn btn-default" data-bs-dismiss="modal" onclick="resetForm()">Abbrechen</button> <!--We schould reset the Form when arborting-->
+                    <button class="btn btn-default" data-bs-dismiss="modal">Abbrechen</button>
                 </div>
             </form>
         </div>
