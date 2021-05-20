@@ -14,7 +14,7 @@
         <div class="container-fluid d-grid gap-4 align-items-center" style="grid-template-columns: 1fr 2fr 1fr;">
             <h2>Character Overview</h2>
             <form class="w-100 me-3" oninput="search(event)">
-                <input type="search" class="form-control" id = "searchTerm"placeholder="Search..." autocomplete="off">
+                <input type="search" class="form-control" id="searchTerm" placeholder="Search..." autocomplete="off">
             </form>
             <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addModal">Character
                 hinzufügen
@@ -54,13 +54,15 @@
                 <form id="addCharForm" onsubmit="addChar()">
                     <div class="form-group">
                         <div class="form-check">
-                            <input autocomplete="off" class="form-check-input" type="radio" name="@type" value="StarWars" id="universeStarWars" onchange="changeExtraAttribute()">
+                            <input autocomplete="off" class="form-check-input" type="radio" name="@type"
+                                   value="StarWars" id="universeStarWars" onchange="radioButtonChange()">
                             <label class="form-check-label" for="universeStarWars">
                                 Star Wars
                             </label>
                         </div>
                         <div class="form-check">
-                            <input autocomplete="off" class="form-check-input" type="radio" name="@type" value="LotR" id="universeLotR" onchange="changeExtraAttribute()" checked>
+                            <input autocomplete="off" class="form-check-input" type="radio" name="@type" value="LotR"
+                                   id="universeLotR" onchange="radioButtonChange()" checked>
                             <label autocomplete="off" class="form-check-label" for="universeLotR">
                                 Herr der Ringe
                             </label>
@@ -78,9 +80,7 @@
                         <label>Alter</label>
                         <input autocomplete="off" type="number" name="age" class="form-control" required>
                     </div>
-                    <div class="form-group" id="extraAttr">
-                        <label id="extraLabel">Lieblingstabak</label>
-                        <input autocomplete="off" type="text" name="favoriteTobacco" class="form-control" required>
+                    <div class="form-group extraAttr">
                     </div>
                 </form>
             </div>
@@ -98,27 +98,31 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Character bearbeiten</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeEdit" aria-hidden="true"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeEdit"
+                        aria-hidden="true"></button>
             </div>
             <div class="modal-body">
                 <form id="editCharForm">
                     <div class="form-group">
                         <label>Vorname</label>
-                        <input autocomplete="off" type="text" name="firstname"  class="form-control vorname-edit"
+                        <input autocomplete="off" type="text" name="firstname" class="form-control vorname-edit"
                                required>
                     </div>
                     <div class="form-group">
                         <label>Nachname</label>
-                        <input autocomplete="off" type="text" name="lastname"  class="form-control nachname-edit"
+                        <input autocomplete="off" type="text" name="lastname" class="form-control nachname-edit"
                                required>
                     </div>
                     <div class="form-group">
                         <label>Alter</label>
-                        <input autocomplete="off" type="text" name="age"  class="form-control alter-edit" required>
+                        <input autocomplete="off" type="text" name="age" class="form-control alter-edit" required>
+                    </div>
+
+                    <div class="form-group extraAttr editextraAttr">
+
                     </div>
                     <div class="form-group">
-                        <input autocomplete="off" type="hidden" name="id"  class="form-control id-edit" required>
-                        <input autocomplete="off" type="hidden" name="id"  class="form-control id-edit" required>
+                        <input autocomplete="off" type="hidden" name="id" class="form-control id-edit" required>
                     </div>
                 </form>
             </div>
@@ -135,13 +139,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Character löschen</h4>
-                <button type="button" class="btn-close" id="closeDelete" data-bs-dismiss="modal" aria-hidden="true"></button>
+                <button type="button" class="btn-close" id="closeDelete" data-bs-dismiss="modal"
+                        aria-hidden="true"></button>
             </div>
             <div class="modal-body">
                 <form id="deleteCharForm">
                     <div class="form-group">
                         <label>Vorname</label>
-                        <input type="text"  class="form-control vorname-edit" readonly>
+                        <input type="text" class="form-control vorname-edit" readonly>
                     </div>
                     <div class="form-group">
                         <label>Nachname</label>
