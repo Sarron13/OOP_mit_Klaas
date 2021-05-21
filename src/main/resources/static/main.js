@@ -48,7 +48,7 @@ function renderTable(json) {
     });
 }
 
-function loadCharAttributes(event) { // Why don't you get information
+function loadCharAttributes(event) {
     const uuid = event.currentTarget.getAttribute('uuid');
     console.log("current: " + event.currentTarget);
     console.log("UUID: " + uuid);
@@ -67,7 +67,7 @@ function loadCharAttributes(event) { // Why don't you get information
             for (let element of document.querySelectorAll(".id-edit")) {
                 element.value = json.id;
             }
-            changeExtraAttributes(json);
+            changeEditExtraAttributes(json);
         });
 }
 
@@ -90,17 +90,17 @@ async function addChar(event) {
         document.getElementById("closeAdd").click();
         formElement.reset();
         document.getElementById('universeLotR').checked = true;
-        changeExtraAttributesAdd(createObjFromForm(formElement));
+        changeAddExtraAttributes(createObjFromForm(formElement));
     }
 }
 
 function radioButtonChange() {
     const formElement = document.querySelector('#addCharForm');
     const form = createObjFromForm(formElement);
-    changeExtraAttributesAdd(form);
+    changeAddExtraAttributes(form);
 }
 
-function changeExtraAttributes(charModel) {
+function changeEditExtraAttributes(charModel) {
     const extraInputs = document.querySelectorAll(".editextraAttr");
     for (const element of extraInputs) {
         if (charModel["@type"] === "StarWars") {
@@ -118,7 +118,7 @@ function changeExtraAttributes(charModel) {
     }
 }
 
-function changeExtraAttributesAdd(form) {
+function changeAddExtraAttributes(form) {
     const extraInputs = document.querySelectorAll(".extraAttrAdd");
     for (const element of extraInputs) {
         if (form["@type"] === "StarWars") {
