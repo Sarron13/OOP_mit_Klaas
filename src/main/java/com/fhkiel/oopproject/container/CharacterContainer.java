@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * <strong>Class-Description:</strong></br>
  * Container for created characters with basic CRUD functionality
- * Implemented as singleton and Serializable to save the data on a hard drive
+ * Implemented as singleton and Serializable to save the data on a hard drive.
  */
 public class CharacterContainer implements Serializable {
 

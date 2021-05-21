@@ -2,6 +2,11 @@ package com.fhkiel.oopproject.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+/**
+ * <strong>Class-Description:</strong></br>
+ * The class "LordOfRingsChar" is a concrete childclass of the abstract
+ * Character and represents Characters from the LotR-Universe.
+ */
 @JsonTypeName("LotR")
 public class LordOfRingsChar extends Character {
     private String favoriteTobacco;

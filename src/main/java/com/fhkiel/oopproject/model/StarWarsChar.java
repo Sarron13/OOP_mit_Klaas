@@ -3,11 +3,9 @@ package com.fhkiel.oopproject.model;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * <strong>Class-Description:</strong>
- * <p>
+ * <strong>Class-Description:</strong></br>
  * The class "StarWarsChar" is a concrete childclass of the abstract
- * Character.
- * </p>
+ * Character and represents Characters from the Star-Wars-Universe.
  */
 
 @JsonTypeName("StarWars")
