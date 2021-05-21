@@ -43,13 +43,15 @@ function renderTable(json) {
         }
         row.setAttribute("data-bs-toggle", "modal");
         row.setAttribute("data-bs-target", "#detailModal");
-        row.setAttribute("onclick", "loadCharAttributes(" + event + ")"); //TODO: Fix Parameter or write new method
+        row.addEventListener("click", loadCharAttributes);
         rowCounter++;
     });
 }
 
-function loadCharAttributes(event) {
-    const uuid = event.target.getAttribute('uuid');
+function loadCharAttributes(event) { // Why don't you get information
+    const uuid = event.currentTarget.getAttribute('uuid');
+    console.log("current: " + event.currentTarget);
+    console.log("UUID: " + uuid);
     fetch(APIURL + uuid)
         .then(response => response.json())
         .then(json => {
@@ -67,7 +69,6 @@ function loadCharAttributes(event) {
             }
             changeExtraAttributes(json);
         });
-
 }
 
 async function addChar(event) {
@@ -127,7 +128,6 @@ function changeExtraAttributesAdd(form) {
         }
     }
 }
-
 
 async function editChar() {
     const formElement = document.querySelector('#editCharForm');
