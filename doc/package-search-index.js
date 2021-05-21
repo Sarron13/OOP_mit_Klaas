@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.fhkiel.oopproject.container"},{"l":"com.fhkiel.oopproject.model"},{"l":"com.fhkiel.oopproject.rest"},{"l":"com.fhkiel.oopproject.serialize"}];updateSearchResults();
