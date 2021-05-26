@@ -8,10 +8,20 @@ package com.fhkiel.oopproject.model;
  */
 public class UpdateVisitor {
 
+    /**
+     * @param c Type: {@link StarWarsChar}
+     * @param newC Type: {@link Character}
+     * @return The updated version of the StarWars-Character
+     */
     public StarWarsChar visit(StarWarsChar c, Character newC) {
         return c.update((StarWarsChar) newC);
     }
 
+    /**
+     * @param c Type: {@link LordOfRingsChar}
+     * @param newC Type: {@link Character}
+     * @return The updated version of the LordOfRings-Character
+     */
     public LordOfRingsChar visit(LordOfRingsChar c, Character newC){
         return c.update((LordOfRingsChar) newC);
     }
