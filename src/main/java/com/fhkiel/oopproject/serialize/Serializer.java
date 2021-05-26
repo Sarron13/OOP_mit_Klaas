@@ -12,7 +12,8 @@ import com.fhkiel.oopproject.container.CharacterContainer;
  * in the static String attribut "filename". The "readData()" method
  * reads the content of the file, which is described in the static
  * String attribut "filename" and converts this data back in to an
- * instance of "CharacterContainer" (deserialization).
+ * instance of "CharacterContainer" (deserialization). <br/>
+ * The Serializer-Class implements the Serializable-Interface.
  */
  // TODO: Maybe short the description.
 public class Serializer implements Serializable {
@@ -42,7 +43,7 @@ public class Serializer implements Serializable {
     }
 
     /**
-     * Write Data to the file on the hard drive, which is mentioned in the String-Attribute "filename".
+     * Write Data to the file on the hard drive, which is mentioned in the String-Attribute {@link #filename}.
      * @param dataToWrite (Instance of CharacterContainer)
      */
     public static void writeData(CharacterContainer dataToWrite) {

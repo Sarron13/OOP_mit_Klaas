@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * Container for created characters with basic CRUD functionality
  * Implemented as singleton and Serializable to save the data on a hard drive.
  */
@@ -41,11 +41,16 @@ public class CharacterContainer implements Serializable {
         return instance;
     }
 
-
+    /**
+     * @return ArrayList of Characters (ArrayList could be empty)
+     */
     public ArrayList<Character> getAllCharacters() {
         return container;
     }
 
+    /**
+     * Saves the Current state of all Characters in CharacterContainer.
+     */
     public void save() {
         Serializer.writeData(this);
     }
@@ -55,6 +60,11 @@ public class CharacterContainer implements Serializable {
         return this;
     }
 
+    /**
+     * Searches in the Charactercontainer for every Character, who is matching to the String.
+     * @param searchString
+     * @return List of matching Characters (eventually a empty list)
+     */
     public List<Character> search(String searchString) {
         List<Character> matchedCharacters = new ArrayList<>();
         for (Character c : this.getAllCharacters()) {
@@ -64,6 +74,11 @@ public class CharacterContainer implements Serializable {
         return matchedCharacters;
     }
 
+    /**
+     * Overwrites a specific Character with its updated version.
+     * @param c Type: Character
+     * @return The updated Character if update was successful and "null" if CharacterContainer does not contain the Character
+     */
     public Character updateCharacter(Character c) {
         Character result = this.findById(c.getId());
         if (result != null)
@@ -72,6 +87,11 @@ public class CharacterContainer implements Serializable {
             return null;
     }
 
+    /**
+     * Deletes a Character from the CharacterContainer by its ID.
+     * @param id Type: UUID
+     * @return "true" when deleting successfull and "false" if not (CharacterContainer does not contain the Character)
+     */
     public boolean deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
             if (container.get(i).getId().equals(id)) {
@@ -82,6 +102,11 @@ public class CharacterContainer implements Serializable {
         return false;
     }
 
+    /**
+     * Finds a Character in the CharacterContainer by its ID.
+     * @param id Type: UUID
+     * @return The Character if CharacterContainer contains the Character and "null" if not
+     */
     public Character findById(UUID id) {
         for (Character character : container) {
             if (character.getId().equals(id))
@@ -90,6 +115,9 @@ public class CharacterContainer implements Serializable {
         return null;
     }
 
+    /**
+     * @return All Characters from the CharacterContainer as one formatted String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
