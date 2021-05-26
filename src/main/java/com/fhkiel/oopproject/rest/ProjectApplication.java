@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * Entry Point for application
  * Start tomcat server with Rest-Api and serving frontend as single index.html
  * Server hosted on http://localhost:8080/

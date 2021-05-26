@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * Controller for serving index.html
  */
 @Controller

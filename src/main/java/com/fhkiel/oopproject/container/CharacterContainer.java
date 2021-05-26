@@ -31,6 +31,9 @@ public class CharacterContainer implements Serializable {
         }
     }
 
+    /**
+     * @return The only instance of the CharacterContainer
+     */
     public static CharacterContainer getInstance() {
         if (instance == null) {
             instance = new CharacterContainer();

@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * Abstract class for all characters providing methods for name matching and updating
  */
 

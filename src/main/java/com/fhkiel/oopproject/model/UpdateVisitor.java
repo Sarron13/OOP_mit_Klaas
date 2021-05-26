@@ -1,7 +1,7 @@
 package com.fhkiel.oopproject.model;
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * The UpdateVisitor-Class automatically differentiate between the two
  * concrete classes and perfomes the updateprocess of these
  * classes.

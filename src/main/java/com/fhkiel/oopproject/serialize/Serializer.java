@@ -5,7 +5,7 @@ import java.io.*;
 import com.fhkiel.oopproject.container.CharacterContainer;
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * The Serializer-Class contains methods to write to and read a file.
  * The "writeData()" method writes the whole instance of a
  * CharacterContainer into a file (serialization), which is described
@@ -20,8 +20,18 @@ public class Serializer implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Type: String <br/>
+     * The Filename states the file, where the data is/will be saved.
+     */
     private static final String filename = "CharacterData.bode";
 
+    /**
+     * Read Data from hard drive. If no Data exists, the method creates the file mentioned in the String-Attribute {@link #filename}.
+     * @return CharacterContainer-Data
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static CharacterContainer readData() throws IOException, ClassNotFoundException {
         CharacterContainer characterData = null;
         FileInputStream fileInput = new FileInputStream(filename);
@@ -31,6 +41,10 @@ public class Serializer implements Serializable {
         return characterData;
     }
 
+    /**
+     * Write Data to the file on the hard drive, which is mentioned in the String-Attribute "filename".
+     * @param dataToWrite (Instance of CharacterContainer)
+     */
     public static void writeData(CharacterContainer dataToWrite) {
         try {
             FileOutputStream fileOutput = new FileOutputStream(filename);

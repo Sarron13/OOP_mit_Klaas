@@ -12,7 +12,7 @@ import com.fhkiel.oopproject.model.CharacterNotFound;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * <strong>Class-Description:</strong></br>
+ * <strong>Class-Description:</strong><br/>
  * Spring rest controller providing urls for CRUD operations on the character container
  */
 
