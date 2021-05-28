@@ -22,7 +22,7 @@ public class Serializer implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Type: String <br/>
+     * Type: {@link String} <br/>
      * The Filename states the file, where the data is/will be saved.
      */
     private static final String filename = "CharacterData.bode";
