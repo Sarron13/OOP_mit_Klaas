@@ -29,7 +29,7 @@ public class Serializer implements Serializable {
 
     /**
      * Read Data from hard drive. If no Data exists, the method creates the file mentioned in the String-Attribute {@link #filename}.
-     * @return CharacterContainer-Data
+     * @return {@link CharacterContainer CharacterContainer-Data}
      * @throws IOException
      * @throws ClassNotFoundException
      */
@@ -44,7 +44,7 @@ public class Serializer implements Serializable {
 
     /**
      * Write Data to the file on the hard drive, which is mentioned in the String-Attribute {@link #filename}.
-     * @param dataToWrite (Instance of CharacterContainer)
+     * @param dataToWrite (Instance of {@link CharacterContainer})
      */
     public static void writeData(CharacterContainer dataToWrite) {
         try {
