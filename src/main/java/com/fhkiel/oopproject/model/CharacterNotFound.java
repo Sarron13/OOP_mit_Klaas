@@ -11,6 +11,11 @@ import java.util.UUID;
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class CharacterNotFound extends RuntimeException{
+
+    /**
+     * Creates an individual RuntimeException.
+     * @param id Type: {@link UUID}
+     */
     public CharacterNotFound(UUID id){
         super("Could not find Character " + id);
     }
