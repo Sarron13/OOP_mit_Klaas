@@ -7,13 +7,13 @@ import com.fhkiel.oopproject.container.CharacterContainer;
 /**
  * <strong>Class-Description:</strong><br/>
  * The Serializer-Class contains methods to write to and read a file.
- * The "writeData()" method writes the whole instance of a
+ * The {@link #writeData} method writes the whole instance of a
  * CharacterContainer into a file (serialization), which is described
- * in the static String attribut "filename". The "readData()" method
+ * in the static String attribut {@link #filename}. The {@link #readData} method
  * reads the content of the file, which is described in the static
- * String attribut "filename" and converts this data back in to an
- * instance of "CharacterContainer" (deserialization). <br/>
- * The Serializer-Class implements the Serializable-Interface.
+ * String attribut {@link #filename} and converts this data back in to an
+ * instance of {@link CharacterContainer} (deserialization). <br/>
+ * The Serializer-Class implements the {@link Serializable Serializable-Interface}.
  */
  // TODO: Maybe short the description.
 public class Serializer implements Serializable {
