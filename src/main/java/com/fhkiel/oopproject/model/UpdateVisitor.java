@@ -11,7 +11,7 @@ public class UpdateVisitor {
     /**
      * @param c Type: {@link StarWarsChar}
      * @param newC Type: {@link Character}
-     * @return The updated version of the StarWars-Character
+     * @return The updated version of the {@link StarWarsChar StarWars-Character}
      */
     public StarWarsChar visit(StarWarsChar c, Character newC) {
         return c.update((StarWarsChar) newC);
@@ -20,7 +20,7 @@ public class UpdateVisitor {
     /**
      * @param c Type: {@link LordOfRingsChar}
      * @param newC Type: {@link Character}
-     * @return The updated version of the LordOfRings-Character
+     * @return The updated version of the {@link LordOfRingsChar LordOfRings-Character}
      */
     public LordOfRingsChar visit(LordOfRingsChar c, Character newC){
         return c.update((LordOfRingsChar) newC);
