@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * <strong>Class-Description:</strong><br/>
  * Abstract class for all characters providing methods for name matching and updating.<br/>
- * The Character-Class implements the Serializable-Interface.
+ * The Character-Class implements the {@link Serializable Serializable-Interface}.
  */
 
 
@@ -135,7 +135,7 @@ public abstract class Character implements Serializable {
 
     /**
      *
-     * @param o Type: Object
+     * @param o Type: {@link Object}
      * @return "true" if its the same object or if its an instance of {@link Character} and the {@link #age}, {@link #firstname} and {@link #lastname} matches, otherwise "false"
      */
     @Override
@@ -159,7 +159,7 @@ public abstract class Character implements Serializable {
     }
 
     /**
-     * @return A String with the {@link #firstname}, {@link #lastname} and {@link #age} of the {@link Character Character-Instance}.
+     * @return A {@link String} with the {@link #firstname}, {@link #lastname} and {@link #age} of the {@link Character Character-Instance}.
      */
     @Override
     public String toString() {
