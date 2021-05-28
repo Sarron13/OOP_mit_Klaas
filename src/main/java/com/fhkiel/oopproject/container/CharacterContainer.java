@@ -12,8 +12,8 @@ import java.util.UUID;
 
 /**
  * <strong>Class-Description:</strong><br/>
- * Container for created characters with basic CRUD functionality
- * Implemented as singleton and Serializable to save the data on a hard drive.
+ * Container for created {@link Character characters} with basic CRUD functionality
+ * Implemented as singleton and {@link Serializable} to save the data on a hard drive.
  */
 public class CharacterContainer implements Serializable {
 
@@ -24,8 +24,8 @@ public class CharacterContainer implements Serializable {
     private ArrayList<Character> container;
 
     /**
-     * Creates an CharacterContainer Object and loads the persistent data from the file mentioned in the Serializer Class.
-     * If this file doesn't exists, the Serializer CLass will create the file and the CharacterContainer will have an empty list.
+     * Creates an {@link CharacterContainer} Object and loads the persistent data from the file mentioned in the {@link Serializer Serializer Class}.
+     * If this file doesn't exists, the {@link Serializer Serializer Class} will create the file and the {@link CharacterContainer} will have an empty list.
      */
     private CharacterContainer() {
         try {
@@ -36,7 +36,7 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * @return The only instance of the CharacterContainer
+     * @return The only instance of the {@link CharacterContainer}
      */
     public static CharacterContainer getInstance() {
         if (instance == null) {
@@ -46,23 +46,23 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * @return ArrayList of Characters (ArrayList could be empty)
+     * @return {@link ArrayList} of {@link Character Characters} (ArrayList could be empty)
      */
     public ArrayList<Character> getAllCharacters() {
         return container;
     }
 
     /**
-     * Saves the Current state of all Characters in CharacterContainer.
+     * Saves the Current state of all {@link Character Characters} in {@link CharacterContainer}.
      */
     public void save() {
         Serializer.writeData(this);
     }
 
     /**
-     * Adds a Character to the list "{@link #container}".
-     * @param character Type: Character
-     * @return A reference of the CharacterContainer Instance
+     * Adds a {@link Character} to the list "{@link #container}".
+     * @param character Type: {@link Character}
+     * @return A reference of the {@link CharacterContainer} Instance
      */
     public final CharacterContainer addCharacter(Character character) {
         this.container.add(character);
@@ -70,9 +70,9 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * Searches in the Charactercontainer for every Character, who is matching to the String.
-     * @param searchString
-     * @return List of matching Characters (eventually a empty list)
+     * Searches in the {@link CharacterContainer} for every {@link Character}, who is matching to the {@link String}.
+     * @param searchString Type: (@link String)
+     * @return {@link List} of matching {@link Character Characters} (eventually a empty list)
      */
     public List<Character> search(String searchString) {
         List<Character> matchedCharacters = new ArrayList<>();
@@ -84,9 +84,9 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * Overwrites a specific Character with its updated version.
-     * @param c Type: Character
-     * @return The updated Character if update was successful and "null" if CharacterContainer does not contain the Character
+     * Overwrites a specific {@link Character} with its updated version.
+     * @param c Type: {@link Character}
+     * @return The updated {@link Character} if update was successful and "null" if {@link CharacterContainer} does not contain the {@link Character}
      */
     public Character updateCharacter(Character c) {
         Character result = this.findById(c.getId());
@@ -97,9 +97,9 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * Deletes a Character from the CharacterContainer by its ID.
-     * @param id Type: UUID
-     * @return "true" when deleting successfull and "false" if not (CharacterContainer does not contain the Character)
+     * Deletes a {@link Character} from the {@link CharacterContainer} by its {@link com.fhkiel.oopproject.model.Character#id ID}.
+     * @param id Type: {@link UUID}
+     * @return "true" when deleting successfull and "false" if not ({@link CharacterContainer} does not contain the {@link Character})
      */
     public boolean deleteByID(UUID id) {
         for (int i = 0; i < container.size(); i++) {
@@ -112,9 +112,9 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * Finds a Character in the CharacterContainer by its ID.
-     * @param id Type: UUID
-     * @return The Character if CharacterContainer contains the Character and "null" if not
+     * Finds a Character in the {@link CharacterContainer} by its {@link com.fhkiel.oopproject.model.Character#id ID}.
+     * @param id Type: {@link UUID}
+     * @return The {@link Character} if {@link CharacterContainer} contains the {@link Character} and "null" if not
      */
     public Character findById(UUID id) {
         for (Character character : container) {
@@ -125,7 +125,7 @@ public class CharacterContainer implements Serializable {
     }
 
     /**
-     * @return All Characters from the CharacterContainer as one formatted String
+     * @return All {@link Character Characters} from the {@link CharacterContainer} as one formatted String
      */
     @Override
     public String toString() {
