@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
@@ -30,6 +31,12 @@ public abstract class Character implements Serializable {
     private String lastname;
     private int age;
 
+    /**
+     * Sets the {@link #firstname}, {@link #lastname} and {@link #age} of the Character.
+     * @param firstname Type: {@link String}
+     * @param lastname Type: {@link String}
+     * @param age Type: int
+     */
     public Character(final String firstname, final String lastname, final int age) {
         this.id = UUID.randomUUID();
         this.setFirstname(firstname).setLastname(lastname).setAge(age);
@@ -38,15 +45,15 @@ public abstract class Character implements Serializable {
 
     /**
      * abstract method for a Visitor-Interface. Will be implemented in concrete childclasses.
-     * @param v Type: UptadeVisitor
-     * @param c Type: Character
+     * @param v Type: {@link UpdateVisitor}
+     * @param c Type: {@link Character}
      * @return /
      */
     public abstract Character acceptUpdater(UpdateVisitor v, Character c);
 
     /**
-     * Checks if the searchString matches completely or partly with the firstname or lastname of the Character.
-     * @param searchString
+     * Checks if the searchString matches completely or partly with the {@link #firstname} or {@link #lastname} of the Character.
+     * @param searchString Type: {@link String}
      * @return "true" if the searchString matches completely or partly with the firstname or lastname and "false" if not
      */
     public boolean matches(String searchString) {
@@ -54,8 +61,8 @@ public abstract class Character implements Serializable {
     }
 
     /**
-     * Checks if the searchString matches completely or partly with the firstname of the Character.
-     * @param searchString
+     * Checks if the searchString matches completely or partly with the {@link #firstname} of the Character.
+     * @param searchString Type: {@link String}
      * @return "true" if matching completely or partly and "false" if not
      */
     public boolean matchesFirstname(String searchString) {
@@ -63,8 +70,8 @@ public abstract class Character implements Serializable {
     }
 
     /**
-     * Checks if the searchString matches completely or partly with the lastname of the Character.
-     * @param searchString
+     * Checks if the searchString matches completely or partly with the {@link #lastname} of the Character.
+     * @param searchString Type: {@link String}
      * @return "true" if matching completely or partly and "false" if not
      */
     public boolean matchesLastname(String searchString) {
@@ -72,35 +79,55 @@ public abstract class Character implements Serializable {
     }
 
     /**
-     * @return The ID as UUID
+     * @return The {@link #id} as {@link UUID}
      */
     public UUID getId() {
         return id;
     }
 
-    // TODO: Ask Klaas if all getter and setter needs Java-Doc according to Mr.Peins Answere
+    /**
+     * @return The {@link #firstname} as {@link String}
+     */
     public String getFirstname() {
         return firstname;
     }
 
+    /**
+     * @param firstname  Type: {@link String}
+     * @return Reference of the current Instance of {@link Character}
+     */
     public final Character setFirstname(String firstname) {
         this.firstname = firstname;
         return this;
     }
 
+    /**
+     * @return The {@link #lastname} as {@link String}
+     */
     public String getLastname() {
         return lastname;
     }
 
+    /**
+     * @param lastname Type: {@link String}
+     * @return Reference of the current Instance of {@link Character}
+     */
     public final Character setLastname(String lastname) {
         this.lastname = lastname;
         return this;
     }
 
+    /**
+     * @return The {@link #age} as int
+     */
     public int getAge() {
         return age;
     }
 
+    /**
+     * @param age Type: int
+     * @return Reference of the current Instance of {@link Character}
+     */
     public final Character setAge(int age) {
         this.age = age;
         return this;
@@ -109,7 +136,7 @@ public abstract class Character implements Serializable {
     /**
      *
      * @param o Type: Object
-     * @return "true" if its the same object or if its an instance of {@link Character} and the age, firstname and lastname matches, otherwise "false"
+     * @return "true" if its the same object or if its an instance of {@link Character} and the {@link #age}, {@link #firstname} and {@link #lastname} matches, otherwise "false"
      */
     @Override
     public boolean equals(Object o) {
@@ -124,7 +151,7 @@ public abstract class Character implements Serializable {
 
     /**
      * Creates the Hash-Code for its instance form the {@link #id}, {@link #firstname}, {@link #lastname} and {@link #age}.
-     * @return Hash-Code as {@link Integer}
+     * @return Hash-Code as int
      */
     @Override
     public int hashCode() {
@@ -132,7 +159,7 @@ public abstract class Character implements Serializable {
     }
 
     /**
-     * @return A String with the {@link #firstname}, {@link #lastname} and {@link #age} of the Character-Instance.
+     * @return A String with the {@link #firstname}, {@link #lastname} and {@link #age} of the {@link Character Character-Instance}.
      */
     @Override
     public String toString() {
