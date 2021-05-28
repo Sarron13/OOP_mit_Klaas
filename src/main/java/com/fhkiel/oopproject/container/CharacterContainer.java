@@ -23,6 +23,10 @@ public class CharacterContainer implements Serializable {
     private static CharacterContainer instance = null;
     private ArrayList<Character> container;
 
+    /**
+     * Creates an CharacterContainer Object and loads the persistent data from the file mentioned in the Serializer Class.
+     * If this file doesn't exists, the Serializer CLass will create the file and the CharacterContainer will have an empty list.
+     */
     private CharacterContainer() {
         try {
             this.container = Serializer.readData().getAllCharacters();
@@ -55,6 +59,11 @@ public class CharacterContainer implements Serializable {
         Serializer.writeData(this);
     }
 
+    /**
+     * Adds a Character to the list "{@link #container}".
+     * @param character Type: Character
+     * @return A reference of the CharacterContainer Instance
+     */
     public final CharacterContainer addCharacter(Character character) {
         this.container.add(character);
         return this;
