@@ -54,14 +54,14 @@ werden kann. Bis auf Bootstrap benutzen wir auch keine weiteren Bibliotheken.
 - Backend mit Spring Rest
 
 Da wir gerne als UI eine Website benutzen möchten, müssen wir unsere Daten aus der Datenbank
-als über REST API zur Verfügung stellen. Um das Rad nicht neu zuerfinden haben wir uns nach
+über REST API zur Verfügung stellen. Um das Rad nicht neu zuerfinden, haben wir uns nach
 bekannten Bibliotheken umgeschaut. Schnell sind wir auf Spring Rest gestoßen, das uns alle 
 Funktionen bot, die wir benötigten. 
 
-Dazu zählten die Erzeugung verschiedener HTTP-Endpouints und die HTTP-CRUD Anfragen GET, POST,
+Dazu zählten die Erzeugung verschiedener HTTP-Endpoints und die HTTP-CRUD Anfragen GET, POST,
 UPDATE und DELETE.
 
-Außerdem wird De-/Serialisierung der Java Objekte zu JSON bereits unterstützt müssen nur noch
-konfiguriert werden.
+Außerdem wird De-/Serialisierung der Java Objekte zu JSON bereits unterstützt. Wir mussten sie nur noch
+für die Vererbung konfigurieren.
 
 
