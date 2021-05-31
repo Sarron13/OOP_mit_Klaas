@@ -9,7 +9,7 @@ The data ist stored on the hard drive and will we restored when server starts up
 
 
 
-##Installation
+## Installation
 
 - Fist download this repository:  
 ```git clone https://github.com/Sarron13/OOP_mit_Klaas.git```
@@ -19,7 +19,7 @@ The data ist stored on the hard drive and will we restored when server starts up
 ```java -jar ./oop-project-0.0.1-SNAPSHOT.jar```
 - Go to [localhost:8080](http://localhost:8080)
 
-##Anleitung
+## Anleitung
 - Einen neuen Character erstellen
 
 Oben rechts auf **Character hinzufügen** klicken und Formular ausfüllen und abschicken. Es kann ein Star Wars oder
@@ -44,7 +44,7 @@ In der Tabelle auf eine Reihe klicken.
 Oben in der Suche den String nach dem in den Vor- und Nachnamen gefiltert wird.
 
 
-##Aufbau des Projekts
+## Aufbau des Projekts
 
 - Frontend Website
 
