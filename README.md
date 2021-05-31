@@ -48,7 +48,7 @@ Oben in der Suche den String nach dem in den Vor- und Nachnamen gefiltert wird.
 
 - Frontend Website
 
-Als Frontend haben wir uns eine Website ausgesucht, da diese sehr flexibel, zeitgemäß und schön gestaltet
+Als Frontend haben wir uns für eine Website entschieden, da diese sehr flexibel, zeitgemäß und schön gestaltet
 werden kann. Bis auf Bootstrap benutzen wir auch keine weiteren Bibliotheken. 
 
 - Backend mit Spring Rest
