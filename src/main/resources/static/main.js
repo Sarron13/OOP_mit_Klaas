@@ -50,8 +50,6 @@ function renderTable(json) {
 
 function loadCharAttributes(event) {
     const uuid = event.currentTarget.getAttribute('uuid');
-    console.log("current: " + event.currentTarget);
-    console.log("UUID: " + uuid);
     fetch(APIURL + uuid)
         .then(response => response.json())
         .then(json => {
@@ -65,6 +63,7 @@ function loadCharAttributes(event) {
                 element.value = json.age;
             }
             for (let element of document.querySelectorAll(".id-edit")) {
+                console.log(json)
                 element.value = json.id;
             }
             changeEditExtraAttributes(json);
@@ -101,19 +100,25 @@ function radioButtonChange() {
 }
 
 function changeEditExtraAttributes(charModel) {
-    const extraInputs = document.querySelectorAll(".editextraAttr");
+    const extraInputs = document.querySelectorAll(".editExtraAttr");
     for (const element of extraInputs) {
         if (charModel["@type"] === "StarWars") {
             element.innerHTML = starWarsInput;
-            const edit = document.querySelector(".editextraAttr .starWarsInput")
-            if (edit)
-                edit.value = charModel["spaceship"];
+            let edit = document.querySelectorAll(".editExtraAttr .starWarsInput")
+            if (edit) {
+                for (let element of edit) {
+                    element.value = charModel["spaceship"]
+                }
+            }
 
         } else if (charModel["@type"] === "LotR") {
             element.innerHTML = lotrInput;
-            const edit = document.querySelector(".editextraAttr .lotrInput")
-            if (edit)
-                edit.value = charModel["favoriteTobacco"];
+            let edit = document.querySelectorAll(".editExtraAttr .lotrInput")
+            if (edit) {
+                for (let element of edit) {
+                    element.value = charModel["favoriteTobacco"]
+                }
+            }
         }
     }
 }
