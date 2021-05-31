@@ -71,7 +71,7 @@ public class CharacterContainer implements Serializable {
 
     /**
      * Searches in the {@link CharacterContainer} for every {@link Character}, who is matching to the {@link String}.
-     * @param searchString Type: (@link String)
+     * @param searchString Type: {@link String}
      * @return {@link List} of matching {@link Character Characters} (eventually a empty list)
      */
     public List<Character> search(String searchString) {
