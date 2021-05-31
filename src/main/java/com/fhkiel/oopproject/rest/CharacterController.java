@@ -13,34 +13,33 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * <strong>Class-Description:</strong><br/>
- * Spring rest controller providing urls for CRUD operations on the character container
+ * Spring rest controller providing URLs for CRUD operations on the {@link CharacterContainer character container}.
  */
-
 @RestController
 public class CharacterController {
 
     private final CharacterContainer container = CharacterContainer.getInstance();
 
     /**
-     *
+     * Adds the transmitted character to the {@link CharacterContainer}.
      * @param c json object Example:
      *          <code>
      *          {
-     *              "@type": "LotR",
+     *              "@type": "{@link com.fhkiel.oopproject.model.LordOfRingsChar LotR}",
      *              "firstname": "Lukas",
      *              "lastname": "Klink",
      *              "age": 20,
      *              "favoriteTobacco": "Halfling's Leaf"
      *          }
      *          {
-     *              "@type": "StarWars",
+     *              "@type": "{@link com.fhkiel.oopproject.model.StarWarsChar StarWars}",
      *              "firstname": "Klaas",
      *              "lastname": "Pelzer",
      *              "age": 20,
      *              "spaceship": "Flying Hwak2"
      *          }
      *          </code>
-     *          at "@type" you choose character class, "StarWars" or "LotR"
+     *          at "@type" you choose character class, "{@link com.fhkiel.oopproject.model.StarWarsChar StarWars}" or "{@link com.fhkiel.oopproject.model.LordOfRingsChar LotR}"
      */
     @PostMapping(path = "/character", consumes = "application/json", produces = "application/json")
     public void addCharacter(@RequestBody Character c) {
@@ -49,7 +48,7 @@ public class CharacterController {
     }
 
     /**
-     * gives all chars
+     * Gives all characters from the {@link CharacterContainer}.
      * @return json object with all characters
      */
     @GetMapping("/character")
@@ -57,10 +56,10 @@ public class CharacterController {
         return container.getAllCharacters();
     }
 
-    /**
-     *
-     * @param id id of wanted chat
-     * @return  char in json
+    /** TODO: *here is something you might need to correct*
+     * Gets a specific character by its {@link UUID id} from the {@link CharacterContainer}.
+     * @param id id of wanted char Type: {@link UUID}
+     * @return  character in json
      */
     @GetMapping("/character/{id}")
     public Character getCharacter(@PathVariable UUID id) {
@@ -71,8 +70,8 @@ public class CharacterController {
     }
 
     /**
-     * updates a char in container
-     * @param c json object with id and attributes, Example
+     * Updates a specific character in the {@link CharacterContainer}.
+     * @param c json object with id and attributes, Example:
      *      <code>
      *      {
      *         "@type": "StarWars",
@@ -93,18 +92,19 @@ public class CharacterController {
     }
 
     /**
-     * searches in last- and firstnames
-     * @param term search Substring
-     * @return json array with all chars containing the substring in their first and lastname
+     * Searches for characters by their {@link com.fhkiel.oopproject.model.Character#lastname last-} and/or {@link com.fhkiel.oopproject.model.Character#firstname firstnames} in the {@link CharacterContainer}.
+     * @param term search Substring Type: {@link String}
+     * @return json array with all characters containing the substring in their first- and/or lastname
      */
     @GetMapping("/character/search")
     public List<Character> searchCharacters(@RequestParam String term) {
         return container.search(term);
     }
 
+    //TODO: Should the ID in the description linked to UUID or to the id attribute of Character?
     /**
-     * deletes char from container
-     * @param id id for char to delete
+     * Deletes a character from {@link CharacterContainer container} by its {@link com.fhkiel.oopproject.model.Character#id id}.
+     * @param id id for char to delete Type: {@link UUID}
      */
     @DeleteMapping("character/{id}")
     public void deleteCharacter(@PathVariable UUID id) {
