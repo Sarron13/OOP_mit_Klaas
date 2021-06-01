@@ -63,7 +63,6 @@ function loadCharAttributes(event) {
                 element.value = json.age;
             }
             for (let element of document.querySelectorAll(".id-edit")) {
-                console.log(json)
                 element.value = json.id;
             }
             changeEditExtraAttributes(json);
@@ -134,7 +133,8 @@ function changeAddExtraAttributes(form) {
     }
 }
 
-async function editChar() {
+async function editChar(event) {
+    event.preventDefault();
     const formElement = document.querySelector('#editCharForm');
     const formData = createObjFromForm(formElement);
     formData["@type"] = document.querySelector(`tr[uuid="${formData.id}"]`).getAttribute('type');
