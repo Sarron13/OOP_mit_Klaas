@@ -43,9 +43,15 @@ function renderTable(json) {
         }
         row.setAttribute("data-bs-toggle", "modal");
         row.setAttribute("data-bs-target", "#detailModal");
-        row.addEventListener("click", loadCharAttributes);
+        row.addEventListener("click", loadDetails);
         rowCounter++;
     });
+}
+
+function loadDetails(event) {
+    loadCharAttributes(event);
+    console.log(document.getElementsByClassName("form-group extraAttr editExtraAttr")[1]);
+    console.log(document.getElementsByClassName("form-group extraAttr editExtraAttr")[1].childNodes);
 }
 
 function loadCharAttributes(event) {
