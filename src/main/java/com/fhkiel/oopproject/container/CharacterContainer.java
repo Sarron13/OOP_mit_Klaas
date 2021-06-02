@@ -89,7 +89,7 @@ public class CharacterContainer implements Serializable {
      * @return The updated {@link Character} if update was successful and "null" if {@link CharacterContainer} does not contain the {@link Character}
      */
     public Character updateCharacter(Character c) {
-        Character result = this.findById(c.getId());
+        Character result = this.findByID(c.getId());
         if (result != null)
             return result.acceptUpdater(new UpdateVisitor(), c);
         else
@@ -116,7 +116,7 @@ public class CharacterContainer implements Serializable {
      * @param id Type: {@link UUID}
      * @return The {@link Character} if {@link CharacterContainer} contains the {@link Character} and "null" if not
      */
-    public Character findById(UUID id) {
+    public Character findByID(UUID id) {
         for (Character character : container) {
             if (character.getId().equals(id))
                 return character;

@@ -63,8 +63,8 @@ public class CharacterController {
      */
     @GetMapping("/character/{id}")
     public Character getCharacter(@PathVariable UUID id) {
-        if (container.findById(id) != null)
-            return container.findById(id);
+        if (container.findByID(id) != null)
+            return container.findByID(id);
         else
             throw new CharacterNotFound(id);
     }
