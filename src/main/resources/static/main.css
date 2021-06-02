@@ -26,3 +26,7 @@ img {
     transform: scale(1.02);
     box-shadow: 0 0 0.5em 0 #858585;
 }
+
+#detailCharForm > .modal-body input {
+    pointer-events: none;
+}
