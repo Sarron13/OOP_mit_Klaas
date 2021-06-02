@@ -43,6 +43,10 @@ In der Tabelle auf eine Reihe klicken.
 
 Oben in der Suche den String nach dem in den Vor- und Nachnamen gefiltert wird.
 
+- Datenbank speicher
+
+Die Dater werden automatisch bei Änderung in einer lokalen Datei gespeichert.
+
 
 ## Aufbau des Projekts
 
@@ -63,5 +67,7 @@ UPDATE und DELETE.
 
 Außerdem wird De-/Serialisierung der Java Objekte zu JSON bereits unterstützt. Wir mussten sie nur noch
 für die Vererbung konfigurieren.
+
+
 
 
