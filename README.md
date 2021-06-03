@@ -68,6 +68,10 @@ UPDATE und DELETE.
 Außerdem wird De-/Serialisierung der Java Objekte zu JSON bereits unterstützt. Wir mussten sie nur noch
 für die Vererbung konfigurieren.
 
+## UML
+
+![UML](UML.png)
+
 
 
 
