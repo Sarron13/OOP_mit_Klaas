@@ -56,7 +56,7 @@ public class CharacterController {
         return container.getAllCharacters();
     }
 
-    /** TODO: *here is something you might need to correct*
+    /** TODO: *here is something you might need to correct*c
      * Gets a specific character by its {@link UUID id} from the {@link CharacterContainer}.
      * @param id id of wanted char Type: {@link UUID}
      * @return  character in json
