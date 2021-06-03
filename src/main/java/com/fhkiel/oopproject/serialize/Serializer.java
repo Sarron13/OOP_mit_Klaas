@@ -15,7 +15,6 @@ import com.fhkiel.oopproject.container.CharacterContainer;
  * instance of {@link CharacterContainer} (deserialization). <br/>
  * The Serializer-Class implements the {@link Serializable Serializable-Interface}.
  */
- // TODO: Maybe short the description.
 public class Serializer implements Serializable {
 
     @Serial

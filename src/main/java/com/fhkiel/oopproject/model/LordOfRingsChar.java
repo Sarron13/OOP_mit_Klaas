@@ -2,8 +2,6 @@ package com.fhkiel.oopproject.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-//TODO: Is Reload after editing a Character ok?
-
 /**
  * <strong>Class-Description:</strong><br/>
  * The class "LordOfRingsChar" is a concrete child class of the abstract

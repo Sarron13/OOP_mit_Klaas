@@ -56,8 +56,8 @@ public class CharacterController {
         return container.getAllCharacters();
     }
 
-    /** TODO: *here is something you might need to correct*c
-     * Gets a specific character by its {@link UUID id} from the {@link CharacterContainer}.
+    /**
+     * Gets a specific character by its {@link com.fhkiel.oopproject.model.Character#id id} from the {@link CharacterContainer}.
      * @param id id of wanted char Type: {@link UUID}
      * @return  character in json
      */
@@ -101,7 +101,6 @@ public class CharacterController {
         return container.search(term);
     }
 
-    //TODO: Should the ID in the description linked to UUID or to the id attribute of Character?
     /**
      * Deletes a character from {@link CharacterContainer container} by its {@link com.fhkiel.oopproject.model.Character#id id}.
      * @param id id for char to delete Type: {@link UUID}
