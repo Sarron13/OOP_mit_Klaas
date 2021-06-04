@@ -11,8 +11,9 @@ public class ContainerMain {
     public static void main(String[] args) {
         CharacterContainer container = CharacterContainer.getInstance();
         System.out.println("Demo Programm\n");
-        System.out.println("Add Lukas Skywalker");
+
         // Add
+        System.out.println("Add Lukas Skywalker");
         StarWarsChar c = new StarWarsChar("Lukas", "Skywalker", 25, "X-Wing");
         container.addCharacter(c);
         System.out.println("Add Bilbo Beutlin");
